@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 import AnimatedGradientText from '../magicui/animated-gradient-text';
 import GetStartedButton from '../animata/button/get-started-button';
 import ShinyButton from '../magicui/shiny-button';
 
 const HeroSection = () => {
 	return (
-		<section className='grid grid-cols-[60%_40%] gap-4'>
+		<section className='grid grid-cols-1 md:grid-cols-[60%_40%] gap-4'>
 			<div className='flex flex-col items-start justify-center'>
 				<AnimatedGradientText className='my-2 text-sm'>
 					🎉 <hr className='mx-2 h-4 w-[1px] shrink-0 bg-gray-300' />{' '}
@@ -23,7 +23,7 @@ const HeroSection = () => {
 					numerology and astrology. Transform your future today with a
 					one-on-one consultation.
 				</p>
-				<div className='flex items-baseline mt-8 space-x-4 cta-group'>
+				<div className='flex flex-col items-baseline gap-4 mt-8 cta-group lg:flex-row'>
 					<GetStartedButton
 						text='Book Your Consultation @ 599 only'
 						className='w-max whitespace-nowrap'

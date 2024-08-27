@@ -2,7 +2,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
-import { cn } from '@/lib/utils';
+import { cn } from '../../lib/utils';
 
 export const TextRevealByWord = ({ text, className }) => {
 	const targetRef = useRef(null);

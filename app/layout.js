@@ -1,7 +1,7 @@
-import Header from '@/components/common/Header.component';
+import Header from '../components/common/Header.component';
 import './globals.css';
 import { Lora, Nunito } from 'next/font/google';
-import Footer from '@/components/common/Footer.component';
+import Footer from '../components/common/Footer.component';
 
 const lora = Lora({
 	subsets: ['latin'],
