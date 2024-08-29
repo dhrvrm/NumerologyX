@@ -2,6 +2,7 @@ import { cn } from '../../lib/utils';
 import AnimatedGradientText from '../magicui/animated-gradient-text';
 import GetStartedButton from '../animata/button/get-started-button';
 import ShinyButton from '../magicui/shiny-button';
+import Image from 'next/image';
 
 const HeroSection = () => {
 	return (
@@ -30,6 +31,14 @@ const HeroSection = () => {
 					/>
 					<ShinyButton text='Explore Free Tools' className='' />
 				</div>
+			</div>
+			<div className=''>
+				<Image
+					src='/images/hero-image.png'
+					alt='Prakriti Verma Ace Numerelogist Picture'
+					width={400}
+					height={600}
+				/>
 			</div>
 		</section>
 	);

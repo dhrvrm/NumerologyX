@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import GetStartedButton from '../animata/button/get-started-button';
 
 const serviceProblems = [
 	{
@@ -53,7 +53,7 @@ const serviceProblems = [
 
 const ServiceOverviewSection = () => {
 	return (
-		<section className='grid grid-cols-1 gap-8 lg:grid-cols-2'>
+		<section className='grid grid-cols-1 gap-8 lg:grid-cols-2 bg-neutral-50'>
 			<div className=''>
 				<h2 className='mb-4 text-3xl'>
 					We Understand Your Struggles and Are Here to Help
@@ -66,6 +66,10 @@ const ServiceOverviewSection = () => {
 					need. Explore our services below and discover how numerology and
 					astrology can help you navigate your path with confidence.
 				</p>
+				<GetStartedButton
+					text='View all consulations'
+					className='mt-4 w-max whitespace-nowrap'
+				/>
 			</div>
 			<div className='grid grid-cols-1 gap-4 mt-4 md:grid-cols-2'>
 				{serviceProblems.map((service) => (
@@ -80,7 +84,7 @@ const ServicePain = ({ src, title, exerpt, width, height }) => {
 	return (
 		<div className='flex gap-2 p-2 '>
 			{/* <Image alt='Astrology Icon' src={src} width={width} height={height} /> */}
-			<div class='flex flex-col gap-1'>
+			<div className='flex flex-col gap-1'>
 				<h3 className='text-2xl'>{title}</h3>
 				<p>{exerpt}</p>
 			</div>

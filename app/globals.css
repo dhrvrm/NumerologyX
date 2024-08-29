@@ -73,7 +73,7 @@
   }
 
   section {
-    @apply px-10 py-12;
+    @apply px-10 py-24;
   }
 
 }

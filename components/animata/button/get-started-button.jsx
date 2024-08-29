@@ -1,10 +1,15 @@
 import { ArrowRight } from 'lucide-react';
 
 import { cn } from '../../../lib/utils';
+import Link from 'next/link';
 
-export default function GetStartedButton({ text = 'Get started', className }) {
+export default function GetStartedButton({
+	text = 'Get started',
+	className,
+	href = '/consulations',
+}) {
 	return (
-		<div>
+		<Link href={href}>
 			<button
 				className={cn(
 					'group flex items-center justify-center gap-3 rounded-lg bg-amber-100 py-2 px-4 font-bold transition-colors duration-100 ease-in-out hover:bg-orange-600',
@@ -40,6 +45,6 @@ export default function GetStartedButton({ text = 'Get started', className }) {
 					</div>
 				</div>
 			</button>
-		</div>
+		</Link>
 	);
 }

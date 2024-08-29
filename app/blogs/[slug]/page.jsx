@@ -41,7 +41,7 @@ export default async function Post({ params }) {
 	}
 
 	return (
-		<article>
+		<article className='max-w-3xl mx-auto mt-10'>
 			<h1>{post.title}</h1>
 			<p>
 				By {post.author} | {post.date}
