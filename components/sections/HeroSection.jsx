@@ -34,10 +34,11 @@ const HeroSection = () => {
 			</div>
 			<div className=''>
 				<Image
-					src='/images/hero-image.png'
+					src='/images/prakriti-hero-600.png'
 					alt='Prakriti Verma Ace Numerelogist Picture'
 					width={400}
 					height={600}
+					quality={100}
 				/>
 			</div>
 		</section>
