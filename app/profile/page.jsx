@@ -193,6 +193,22 @@ export default function ProfilePage() {
 					)}
 				</CardContent>
 			</Card>
+			<Card>
+				<CardHeader>
+					<CardTitle>Orders List</CardTitle>
+				</CardHeader>
+				<CardContent>
+					{user?.orders && user.orders.length > 0 ? (
+						<ul className='pl-5 list-disc'>
+							{user.orders.map((booking, index) => (
+								<li key={index}>{booking}</li>
+							))}
+						</ul>
+					) : (
+						<p>No orders found.</p>
+					)}
+				</CardContent>
+			</Card>
 
 			<Button onClick={handleLogout} variant='destructive'>
 				Log Out

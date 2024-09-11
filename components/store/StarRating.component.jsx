@@ -50,18 +50,24 @@ const StarRating = ({ rating }) => {
 	);
 
 	return (
-		<div className='flex items-center space-x-1 rtl:space-x-reverse'>
-			{[...Array(5)].map((_, index) => (
-				<span key={index}>
-					{index < fullStars ? (
-						<FullStar />
-					) : index === fullStars && hasHalfStar ? (
-						<HalfStar />
-					) : (
-						<EmptyStar />
-					)}
-				</span>
-			))}
+		<div className='flex flex-row items-center content-center gap-2'>
+			<div className='flex items-center space-x-1 rtl:space-x-reverse'>
+				{[...Array(5)].map((_, index) => (
+					<span key={index}>
+						{index < fullStars ? (
+							<FullStar />
+						) : index === fullStars && hasHalfStar ? (
+							<HalfStar />
+						) : (
+							<EmptyStar />
+						)}
+					</span>
+				))}
+			</div>
+
+			<div className='bg-yellow-100 text-orange-800 text-xs font-semibold px-2.5 py-0.5 rounded ms-3'>
+				{rating}
+			</div>
 		</div>
 	);
 };

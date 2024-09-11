@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { fetchAllProducts, searchProducts } from '../../lib/appwrite/database';
 import ProductCard from '../../components/store/ProductCard.component';
+import StickyCart from './_components/StickyCart';
 
 const StorePage = () => {
 	const [products, setProducts] = useState([]);

@@ -7,11 +7,16 @@ import { Minus, Plus } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
 import { Input } from '../../../components/ui/input';
 import { useState, useEffect } from 'react';
+import StickyCart from '../_components/StickyCart';
+import { useCartStore } from '../../../lib/zustand/cartStore'; // Import Cart Store
+import ProductImagesSlider from '../_components/ProductImagesSlider';
 
 const ProductPage = ({ params }) => {
+	const { addToCart } = useCartStore(); // Access addToCart function from Zustand cart store
 	const [quantity, setQuantity] = useState(1);
 	const [product, setProduct] = useState(null);
 
+	// Fetch product data on component mount
 	useEffect(() => {
 		const fetchData = async () => {
 			const productData = await fetchProductBySlug(params.slug);
@@ -20,10 +25,27 @@ const ProductPage = ({ params }) => {
 		fetchData();
 	}, [params.slug]);
 
-	const incrementQuantity = () => setQuantity((prev) => prev + 1);
+	// Handlers for quantity increment and decrement
+	const incrementQuantity = () =>
+		setQuantity((prev) =>
+			product && prev < product.quantity_available ? prev + 1 : prev
+		);
+
 	const decrementQuantity = () =>
 		setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
 	const handleQuantityChange = (e) => setQuantity(Number(e.target.value));
+
+	// Add the product to the cart
+	const handleAddToCart = () => {
+		if (product && quantity <= product.quantity_available) {
+			addToCart(product, quantity);
+			console.log(product, quantity);
+			// Add product to the cart with the selected quantity
+		} else {
+			alert('Insufficient stock');
+		}
+	};
 
 	if (!product) return <div>Product not found</div>;
 
@@ -32,12 +54,7 @@ const ProductPage = ({ params }) => {
 			<div className='max-w-screen-xl px-4 mx-auto 2xl:px-0'>
 				<div className='lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16'>
 					<div className='max-w-md mx-auto shrink-0 lg:max-w-lg'>
-						<Image
-							src={product.images[0]}
-							alt={product.title}
-							width={500}
-							height={500}
-						/>
+						<ProductImagesSlider images={product?.images} />
 					</div>
 					<div className='mt-6 sm:mt-8 lg:mt-0'>
 						<h1 className='text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white'>
@@ -45,9 +62,6 @@ const ProductPage = ({ params }) => {
 						</h1>
 						<div className='flex items-center gap-2 mt-2'>
 							<StarRating rating={product?.rating} />
-							<p className='text-sm font-medium leading-none text-gray-500 dark:text-gray-400'>
-								({product?.rating})
-							</p>
 						</div>
 						<div className='mt-4 sm:items-center sm:gap-4 sm:flex'>
 							<div className='flex flex-col items-start gap-4'>
@@ -88,6 +102,7 @@ const ProductPage = ({ params }) => {
 								<Input
 									type='number'
 									min='1'
+									max={product.quantity_available}
 									value={quantity}
 									onChange={handleQuantityChange}
 									className='w-16 text-center'
@@ -103,30 +118,12 @@ const ProductPage = ({ params }) => {
 								</Button>
 							</div>
 
-							<a
-								href='#'
-								className='text-white mt-4 sm:mt-0 bg-orange-600 hover:bg-orange-700 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center'
-								role='button'
+							<Button
+								className='mt-4 sm:mt-0 bg-orange-600 hover:bg-orange-700 text-white flex items-center justify-center px-5 py-2.5 rounded-lg'
+								onClick={handleAddToCart}
 							>
-								<svg
-									class='w-5 h-5 -ms-2 me-2'
-									aria-hidden='true'
-									xmlns='http://www.w3.org/2000/svg'
-									width='24'
-									height='24'
-									fill='none'
-									viewBox='0 0 24 24'
-								>
-									<path
-										stroke='currentColor'
-										stroke-linecap='round'
-										stroke-linejoin='round'
-										stroke-width='2'
-										d='M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6'
-									/>
-								</svg>
-								Add to cart
-							</a>
+								Add to Cart
+							</Button>
 						</div>
 						<hr className='my-6 border-gray-200 md:my-8 dark:border-gray-800' />
 						<p className='mb-6 text-gray-500 dark:text-gray-400'>
@@ -140,6 +137,7 @@ const ProductPage = ({ params }) => {
 					</div>
 				</div>
 			</div>
+			<StickyCart /> {/* Include StickyCart to show the cart */}
 		</section>
 	);
 };
