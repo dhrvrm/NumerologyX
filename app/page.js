@@ -8,8 +8,8 @@ export default function Home() {
 		<main>
 			<HeroSection />
 			<ServiceOverviewSection />
-			<StoreOverviewSection />
-			<ProblemStatementSection />
+			{/* <StoreOverviewSection /> */}
+			{/* <ProblemStatementSection /> */}
 		</main>
 	);
 }
