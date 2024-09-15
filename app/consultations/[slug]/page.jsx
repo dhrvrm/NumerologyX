@@ -59,7 +59,7 @@ export default function Component() {
                 />
               </div>
               <p className="text-lg text-gray-700">
-                Your name is more than just a label; it's a unique vibration that resonates with the energies of the universe, influencing your life's journey. We offer specialized Name Correction services that combine the ancient wisdom of numerology with divine energy alignment to help you unlock your full potential.
+                Your name is more than just a label, it&apos;s a unique vibration that resonates with the energies of the universe, influencing your life&apos;s journey. We offer specialized Name Correction services that combine the ancient wisdom of numerology with divine energy alignment to help you unlock your full potential.
               </p>
 
               <h2 className="text-2xl font-semibold mt-6 text-gray-800">Why Name Correction?</h2>
