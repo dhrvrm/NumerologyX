@@ -6,7 +6,7 @@ import Link from 'next/link';
 export default function GetStartedButton({
 	text = 'Get started',
 	className,
-	href = '/consulations',
+	href = '/consultations',
 }) {
 	return (
 		<Link href={href}>
