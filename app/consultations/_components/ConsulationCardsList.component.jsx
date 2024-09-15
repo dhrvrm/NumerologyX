@@ -13,42 +13,42 @@ const consultations = [
     title: "Numerology Consultation",
     description: "Personalized insights based on your unique numbers to guide your life decisions.",
     link: "/consultations/numerology",
-    image: "/images/services/consulation-remedy.jpg",
+    image: "/images/services/consulations-test/consulation-remedy.jpg",
     color: "bg-purple-100"
   },
   {
     title: "Name Correction Consultation",
     description: "Adjust your name to align with positive numerological vibrations for success.",
     link: "/consultations/name-correction",
-    image: "/images/services/consulations-general.jpg",
+    image: "/images/services/consulations-test/consulations-general.jpg",
     color: "bg-blue-100"
   },
   {
     title: "Relationship Counseling",
     description: "Deepen your understanding of relationship dynamics and improve your connections.",
     link: "/consultations/relationship",
-    image: "/images/services/consulation-remedy.jpg",
+    image: "/images/services/consulations-test/consulation-remedy.jpg",
     color: "bg-pink-100"
   },
   {
     title: "General Counseling",
     description: "Receive expert advice on any life challenges or decisions you're facing.",
     link: "/consultations/general",
-    image: "/images/services/consulations-general.jpg",
+    image: "/images/services/consulations-test/consulations-general.jpg",
     color: "bg-green-100"
   },
   {
     title: "Mobile Numerology Consultation",
     description: "Convenient consultations through mobile for on-the-go guidance.",
     link: "/consultations/mobile",
-    image: "/images/services/consulation-remedy.jpg",
+    image: "/images/services/consulations-test/consulation-remedy.jpg",
     color: "bg-yellow-100"
   },
   {
     title: "Yantra Recommendation",
     description: "Harness the power of sacred symbols to enhance specific areas of your life.",
     link: "/consultations/yantra",
-    image: "/images/services/consulations-general.jpg",
+    image: "/images/services/consulations-test/consulations-general.jpg",
     color: "bg-indigo-100"
   },
   // ... (other consultation services)

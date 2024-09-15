@@ -51,7 +51,7 @@ export default function Component() {
             <CardContent className="space-y-6">
               <div className="relative aspect-video overflow-hidden rounded-lg">
                 <Image
-                  src="/images/services/consulations-general.jpg"
+                  src="/images/services/consulations-test/consulations-general.jpg"
                   alt="Name Correction Consultation"
                   layout="fill"
                   objectFit="cover"
