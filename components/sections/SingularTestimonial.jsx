@@ -44,7 +44,7 @@ export default function StylishTestimonial() {
 						<div className='flex items-center space-x-4'>
 							<div className='relative w-16 h-16 overflow-hidden rounded-full'>
 								<Image
-									src='/images/ap.jpg'
+									src='/images/testimonials/ap.jpg'
 									alt='Archana Ji'
 									layout='fill'
 									objectFit='cover'
