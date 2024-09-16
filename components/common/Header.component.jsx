@@ -19,23 +19,13 @@ const Header = () => {
 	return (
 		<header className='sticky top-0 z-50 flex items-center justify-between px-4 py-2 bg-white border-b-2 md:py-4 border-grey-50 md:px-10'>
 			<Link href='/' className='flex items-center'>
-				<motion.div
-					initial={{ opacity: 0, scale: 0.5 }}
-					animate={{ opacity: 1, scale: 1 }}
-					transition={{
-						duration: 0.8,
-						delay: 0.2,
-						ease: [0, 0.71, 0.2, 1.01],
-					}}
-				>
-					<Image
-						src='/images/adept-numero-logo.png'
-						alt='NumerelogyX Logo'
-						width={150}
-						height={50}
-						className='w-auto h-12 md:h-10'
-					/>
-				</motion.div>
+				<Image
+					src='/images/adept-numero-logo.png'
+					alt='NumerelogyX Logo'
+					width={150}
+					height={50}
+					className='w-auto h-12 md:h-10'
+				/>
 			</Link>
 
 			{/* Desktop Navigation */}
@@ -89,7 +79,7 @@ const Header = () => {
 							exit={{ x: '100%' }}
 							transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 							className='fixed inset-y-0 right-0 w-64 bg-white shadow-lg'
-							onClick={(e) => e.stopPropagation()}
+							onClick={(e) => e.stopPropagation()} // Prevent closing on clicking inside the menu
 						>
 							<div className='flex flex-col h-full p-4'>
 								<button

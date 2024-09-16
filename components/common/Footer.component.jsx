@@ -102,10 +102,10 @@ export default function Footer() {
 						<li>
 							Phone:{' '}
 							<a
-								href='tel:+9199999999'
+								href='tel:+919625183125'
 								className='transition-colors duration-200 hover:text-gray-900'
 							>
-								+91-99999-99999
+								+91-9625183125
 							</a>
 						</li>
 						<li>
@@ -120,10 +120,10 @@ export default function Footer() {
 						<li>
 							WhatsApp:{' '}
 							<a
-								href='https://wa.me/9199999999'
+								href='https://wa.me/919625183125?text=Hello!%20I%20came%20from%20the%20website%20and%20would%20like%20to%20ask%20about%20your%20services.'
 								className='transition-colors duration-200 hover:text-gray-900'
 							>
-								99999-99999
+								+91-9625183125
 							</a>
 						</li>
 					</ul>
@@ -156,7 +156,7 @@ export default function Footer() {
 
 				{/* Copyright */}
 				<div className='mt-8 text-center'>
-					<p>&copy; 2024, Adept Prakriti. All rights reserved.</p>
+					<p>&copy; 2024, Adept Numero. All rights reserved.</p>
 				</div>
 			</div>
 		</footer>
