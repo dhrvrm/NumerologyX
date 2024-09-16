@@ -19,7 +19,14 @@ const HeroSection = () => {
 					</span>
 				</AnimatedGradientText>
 				<h1 className='max-w-xl mb-2 text-4xl md:text-6xl'>
-					Your Path, Revealed Through Numbers
+					Your{' '}
+					<span className='text-transparent bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text'>
+						Path
+					</span>
+					, Revealed Through{' '}
+					<span className='text-transparent bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text'>
+						Numbers
+					</span>
 				</h1>
 				<p className='max-w-xl text-lg'>
 					Experience accurate predictions and personalized guidance with expert

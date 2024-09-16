@@ -1,26 +1,57 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getAllPosts } from '../../lib/posts';
+import {
+	Card,
+	CardContent,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from '../../components/ui/card';
+import { Badge } from '../../components/ui/badge';
 
 export default function BlogIndex() {
 	const posts = getAllPosts();
 
 	return (
-		<div className='mx-10 mt-10'>
-			<h1>Blog Posts</h1>
-			<ul className=''>
+		<div className='container px-4 py-8 mx-auto'>
+			<h1 className='mb-8 text-4xl font-bold'>Blog Posts</h1>
+			<div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
 				{posts.map((post) => (
-					<li key={post.slug}>
+					<Card
+						key={post.slug}
+						className='transition-shadow duration-300 hover:shadow-lg'
+					>
 						<Link href={`/blogs/${post.slug}`}>
-							<h2>{post.title}</h2>
-							<p>{post.excerpt}</p>
-							<p>
-								By {post.author} | {post.date}
-							</p>
-							<p>Tags: {post.tags.join(', ')}</p>
+							<CardHeader>
+								<Image
+									src={post.coverImage || '/images/services/career-service.jpg'}
+									alt={post.title}
+									width={400}
+									height={200}
+									className='object-cover w-full h-48 rounded-t-lg'
+								/>
+								<CardTitle className='mt-4'>{post.title}</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<p className='text-muted-foreground'>{post.excerpt}</p>
+							</CardContent>
+							<CardFooter className='flex flex-col items-start'>
+								<p className='mb-2 text-sm text-muted-foreground'>
+									By {post.author} | {post.date}
+								</p>
+								<div className='flex flex-wrap gap-2'>
+									{post.tags.map((tag) => (
+										<Badge key={tag} variant='secondary'>
+											{tag}
+										</Badge>
+									))}
+								</div>
+							</CardFooter>
 						</Link>
-					</li>
+					</Card>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 }

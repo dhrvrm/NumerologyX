@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation';
+import Image from 'next/image';
 import { getPostBySlug, getAllPosts } from '../../../lib/posts';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import { Badge } from '../../../components/ui/badge';
 
 export async function generateStaticParams() {
 	const posts = getAllPosts();
@@ -41,12 +43,30 @@ export default async function Post({ params }) {
 	}
 
 	return (
-		<article className='max-w-3xl mx-auto mt-10'>
-			<h1>{post.title}</h1>
-			<p>
-				By {post.author} | {post.date}
-			</p>
-			<MDXRemote source={post.content} />
+		<article className='container max-w-3xl px-4 py-8 mx-auto'>
+			<Image
+				src={post.coverImage || '/images/services/career-service.jpg'}
+				alt={post.title}
+				width={800}
+				height={400}
+				className='object-cover w-full h-64 mb-8 rounded-lg'
+			/>
+			<h1 className='mb-4 text-4xl font-bold'>{post.title}</h1>
+			<div className='flex items-center justify-between mb-8'>
+				<p className='text-muted-foreground'>
+					By {post.author} | {post.date}
+				</p>
+				<div className='flex flex-wrap gap-2'>
+					{post.tags.map((tag) => (
+						<Badge key={tag} variant='secondary'>
+							{tag}
+						</Badge>
+					))}
+				</div>
+			</div>
+			<div className='prose prose-lg max-w-none'>
+				<MDXRemote source={post.content} />
+			</div>
 		</article>
 	);
 }
