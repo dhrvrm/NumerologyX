@@ -123,74 +123,76 @@ export default function PhoneSignIn() {
 	};
 
 	return (
-		<Card className='w-[350px]'>
-			<CardHeader>
-				<CardTitle>Sign In</CardTitle>
-				<CardDescription>Sign in with your phone number</CardDescription>
-			</CardHeader>
-			<CardContent>
-				{step === 'phone' ? (
-					<form onSubmit={handleSendOtp} className='space-y-4'>
-						<div className='space-y-2'>
-							<Label htmlFor='phone'>Phone Number</Label>
-							<div className='flex space-x-2'>
-								<Select value={countryCode} onValueChange={setCountryCode}>
-									<SelectTrigger className='w-[100px]'>
-										<SelectValue placeholder='Code' />
-									</SelectTrigger>
-									<SelectContent>
-										{countryCodes.map((country) => (
-											<SelectItem key={country.code} value={country.code}>
-												{country.code} {country.country}
-											</SelectItem>
-										))}
-									</SelectContent>
-								</Select>
+		<section>
+			<Card className='w-[350px] mx-auto'>
+				<CardHeader>
+					<CardTitle>Sign In</CardTitle>
+					<CardDescription>Sign in with your phone number</CardDescription>
+				</CardHeader>
+				<CardContent>
+					{step === 'phone' ? (
+						<form onSubmit={handleSendOtp} className='space-y-4'>
+							<div className='space-y-2'>
+								<Label htmlFor='phone'>Phone Number</Label>
+								<div className='flex space-x-2'>
+									<Select value={countryCode} onValueChange={setCountryCode}>
+										<SelectTrigger className='w-[100px]'>
+											<SelectValue placeholder='Code' />
+										</SelectTrigger>
+										<SelectContent>
+											{countryCodes.map((country) => (
+												<SelectItem key={country.code} value={country.code}>
+													{country.code} {country.country}
+												</SelectItem>
+											))}
+										</SelectContent>
+									</Select>
+									<Input
+										id='phone'
+										type='tel'
+										placeholder='1234567890'
+										value={phoneNumber}
+										onChange={(e) => setPhoneNumber(e.target.value)}
+										className='flex-1'
+										required
+									/>
+								</div>
+							</div>
+							<Button type='submit' className='w-full' disabled={isLoading}>
+								{isLoading ? 'Sending...' : 'Send OTP'}
+							</Button>
+						</form>
+					) : (
+						<form onSubmit={handleVerifyOtp} className='space-y-4'>
+							<div className='space-y-2'>
+								<Label htmlFor='otp'>Enter OTP</Label>
 								<Input
-									id='phone'
-									type='tel'
-									placeholder='1234567890'
-									value={phoneNumber}
-									onChange={(e) => setPhoneNumber(e.target.value)}
-									className='flex-1'
+									id='otp'
+									type='text'
+									placeholder='123456'
+									value={otp}
+									onChange={(e) => setOtp(e.target.value)}
+									maxLength={6}
 									required
 								/>
 							</div>
-						</div>
-						<Button type='submit' className='w-full' disabled={isLoading}>
-							{isLoading ? 'Sending...' : 'Send OTP'}
-						</Button>
-					</form>
-				) : (
-					<form onSubmit={handleVerifyOtp} className='space-y-4'>
-						<div className='space-y-2'>
-							<Label htmlFor='otp'>Enter OTP</Label>
-							<Input
-								id='otp'
-								type='text'
-								placeholder='123456'
-								value={otp}
-								onChange={(e) => setOtp(e.target.value)}
-								maxLength={6}
-								required
-							/>
-						</div>
-						<Button type='submit' className='w-full' disabled={isLoading}>
-							{isLoading ? 'Verifying...' : 'Verify OTP'}
-						</Button>
-					</form>
-				)}
-				{error && <p className='mt-2 text-sm text-red-500'>{error}</p>}
-			</CardContent>
-			<Button
-				variant='destructive'
-				onClick={async () => {
-					await account.deleteSession('current');
-					console.log('Log out sucessful');
-				}}
-			>
-				Logout
-			</Button>
-		</Card>
+							<Button type='submit' className='w-full' disabled={isLoading}>
+								{isLoading ? 'Verifying...' : 'Verify OTP'}
+							</Button>
+						</form>
+					)}
+					{error && <p className='mt-2 text-sm text-red-500'>{error}</p>}
+				</CardContent>
+				<Button
+					variant='destructive'
+					onClick={async () => {
+						await account.deleteSession('current');
+						console.log('Log out sucessful');
+					}}
+				>
+					Logout
+				</Button>
+			</Card>
+		</section>
 	);
 }

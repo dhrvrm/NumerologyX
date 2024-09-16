@@ -52,12 +52,12 @@ const consultations = [
 
 const ServiceOverviewSection = () => {
 	return (
-		<section className='container px-4 py-8 mx-auto'>
+		<section>
 			<div className='mb-12'>
 				<h2 className='mb-4 text-3xl'>
 					We Understand Your Struggles and Are Here to Help
 				</h2>
-				<p className='max-w-xl'>
+				<p className='max-w-6xl'>
 					Life is filled with important decisions and challenges that can leave
 					you feeling overwhelmed or uncertain. Whether you&apos;re facing
 					career dilemmas, relationship struggles, or searching for personal
