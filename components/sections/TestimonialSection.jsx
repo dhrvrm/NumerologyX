@@ -17,24 +17,24 @@ export default function TestimonialsSection() {
 
 	const testimonials = [
 		{
-			name: 'Sarah J.',
-			text: "Prakritii's numerology reading was eye-opening. It helped me understand myself better and make important life decisions.",
+			name: 'Sarabjit Singh',
+			designation: 'Entrepreneur',
+			text: 'Highly Recommend! Life-Changing Results. I recently had the privilege of receiving career and finance consultation, as well as mobile number consultation, from Prakritii Vermaa, and the results have been nothing short of amazing! Her deep knowledge in numerology and insightful guidance have brought a significant positive shift in my life.',
 		},
 		{
-			name: 'Michael R.',
-			text: "The career guidance I received was spot-on. I'm now on a path that aligns perfectly with my numerological profile.",
+			name: 'Pinky Kumari',
+			designation: 'Homemaker',
+			text: 'From the moment I consulted her, she provided clear direction and remedies, which were easy to implement. I can already see improvements in both my career and financial situation, and even subtle changes in my personal energy and overall well-being. Her remedies also helped align things perfectly.',
 		},
 		{
-			name: 'Emily L.',
-			text: "Thanks to Prakritii's relationship compatibility analysis, I've found harmony in my personal life.",
+			name: 'Himanshu Kumar',
+			designation: 'Student',
+			text: "I highly recommend Prakritii Vermaa to anyone seeking life transformation through numerology. Her approach is both professional and compassionate. I'm truly grateful for her expertise and support!",
 		},
 		{
-			name: 'David K.',
-			text: "Prakritii's insights into my business numerology have been invaluable. My company has seen significant growth since our consultation.",
-		},
-		{
-			name: 'Lisa M.',
-			text: "The name correction consultation for my baby was fascinating. We feel confident we've chosen the perfect name for our child's future.",
+			name: 'Manisha Singh',
+			designation: 'Teacher',
+			text: "Prakritii Vermaa's numerology consultation was insightful and transformative. Her guidance helped me gain clarity and direction in both personal and professional aspects. Highly recommend her expertise.",
 		},
 	];
 
@@ -42,7 +42,7 @@ export default function TestimonialsSection() {
 
 	return (
 		<div className='px-4 py-12 bg-gradient-to-r from-orange-100 to-orange-200 sm:px-6 lg:px-8'>
-			<h2 className='mb-8 text-3xl font-bold text-center text-orange-600'>
+			<h2 className='mb-8 text-3xl font-bold text-orange-600'>
 				What Clients Say
 			</h2>
 			<Swiper
@@ -68,7 +68,7 @@ export default function TestimonialsSection() {
 									&quot;{testimonial.text}&quot;
 								</p>
 								<p className='font-semibold text-orange-600'>
-									{testimonial.name}
+									{testimonial.name}, {testimonial?.designation}
 								</p>
 							</CardContent>
 						</Card>
