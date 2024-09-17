@@ -25,7 +25,9 @@ export default function BlogIndex() {
 						<Link href={`/blogs/${post.slug}`}>
 							<CardHeader>
 								<Image
-									src={post.coverImage || '/images/services/career-service.jpg'}
+									src={
+										post.coverImage || '/images/services/vedic-remedies.webp'
+									}
 									alt={post.title}
 									width={400}
 									height={200}

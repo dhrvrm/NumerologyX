@@ -1,35 +1,46 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-
+import { useRouter, usePathname } from 'next/navigation';
 import { cn } from '../../../lib/utils';
-import { useRouter } from 'next/navigation';
 
 export default function NavTabs({ tabs }) {
+	const router = useRouter();
+	const pathname = usePathname();
 	const [selected, setSelected] = useState('');
+
+	useEffect(() => {
+		const currentTab = tabs.find((tab) =>
+			pathname.toLowerCase().startsWith(`/${tab.toLowerCase()}`)
+		);
+		if (currentTab) {
+			setSelected(currentTab);
+		}
+	}, [pathname, tabs]);
+
+	const handleTabClick = (tab) => {
+		setSelected(tab);
+		router.push(`/${tab.toLowerCase()}`);
+	};
 
 	return (
 		<div className='flex flex-wrap items-center justify-center gap-4 rounded-md'>
 			{tabs.map((tab) => (
 				<Tab
+					key={tab}
 					text={tab}
 					selected={selected === tab}
-					setSelected={setSelected}
-					key={tab}
+					onClick={() => handleTabClick(tab)}
 				/>
 			))}
 		</div>
 	);
 }
 
-const Tab = ({ text, selected, setSelected }) => {
-	const router = useRouter();
+const Tab = ({ text, selected, onClick }) => {
 	return (
 		<button
-			onClick={() => {
-				setSelected(text);
-				router.push(`/${text.toLowerCase()}`);
-			}}
+			onClick={onClick}
 			className={cn(
 				'relative rounded-md p-2 text-sm transition-all',
 				selected ? 'text-orange-600 font-bold' : 'hover:font-bold'

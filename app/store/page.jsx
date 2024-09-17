@@ -1,26 +1,44 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation'; // For managing navigation and query params
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { fetchAllProducts, searchProducts } from '../../lib/appwrite/database';
+import { fetchAllProducts } from '../../lib/appwrite/database'; // Fetch product data
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
-import { Checkbox } from '../../components/ui/checkbox';
-import { Label } from '../../components/ui/label';
 import { Badge } from '../../components/ui/badge';
 import { Skeleton } from '../../components/ui/skeleton';
 import StickyCart from './_components/StickyCart';
+import { useCartStore } from '../../lib/zustand/cartStore';
+
+const categories = [
+	'Raw Stone',
+	'Pendant',
+	'Bracelet',
+	'Decor',
+	'Rudraksha',
+	'Tree',
+	'Mala',
+];
 
 const ProductCard = ({ product }) => {
 	const [imageIndex, setImageIndex] = useState(0);
+	const { addToCart } = useCartStore();
 
 	const discountPercentage = Math.round(
 		((product.actual_price - product.current_price) / product.actual_price) *
 			100
 	);
+
+	const handleAddToCart = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		if (product.quantity_available > 0) {
+			addToCart(product, 1);
+		}
+	};
 
 	return (
 		<Link href={`/store/${product.slug}`} passHref>
@@ -46,6 +64,7 @@ const ProductCard = ({ product }) => {
 									key={imageIndex}
 									src={product?.images[imageIndex]}
 									alt={product?.title}
+									title={product?.title}
 									className='absolute top-0 left-0 object-cover w-full h-full'
 									initial={{ opacity: 0 }}
 									animate={{ opacity: 1 }}
@@ -68,9 +87,9 @@ const ProductCard = ({ product }) => {
 						</div>
 					</div>
 					<CardContent className='p-4'>
-						<h3 className='text-lg font-semibold line-clamp-1'>
+						<h2 className='text-lg font-semibold line-clamp-1'>
 							{product?.title}
-						</h3>
+						</h2>
 						<div className='flex items-baseline gap-2 mt-1'>
 							<span className='text-sm font-medium text-gray-900'>
 								₹{product?.current_price.toFixed(2)}
@@ -81,6 +100,13 @@ const ProductCard = ({ product }) => {
 								</span>
 							)}
 						</div>
+						<Button
+							onClick={handleAddToCart}
+							disabled={product.quantity_available <= 0}
+							className='w-full mt-2 bg-orange-600 hover:bg-orange-700'
+						>
+							{product.quantity_available > 0 ? 'Add to Cart' : 'Out of Stock'}
+						</Button>
 					</CardContent>
 				</Card>
 			</motion.div>
@@ -94,6 +120,7 @@ const ProductCardSkeleton = () => (
 		<CardContent className='p-4'>
 			<Skeleton className='w-3/4 h-6 mb-2' />
 			<Skeleton className='w-1/4 h-4' />
+			<Skeleton className='w-full h-10 mt-2' />
 		</CardContent>
 	</Card>
 );
@@ -103,15 +130,14 @@ const StorePage = () => {
 	const [filteredProducts, setFilteredProducts] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('');
-	const [selectedTags, setSelectedTags] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
+	const searchParams = useSearchParams(); // To access query params
 	const router = useRouter();
+	const categoryFromUrl = searchParams.get('category') || ''; // Get the category from the URL
 
-	const categories = ['Category 1', 'Category 2', 'Category 3']; // Replace with actual categories
-	const tags = ['Tag 1', 'Tag 2', 'Tag 3']; // Replace with actual tags
-
+	// Fetch products on mount
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -138,119 +164,88 @@ const StorePage = () => {
 		fetchData();
 	}, []);
 
+	// Update selected category when the URL changes
+	useEffect(() => {
+		setSelectedCategory(categoryFromUrl);
+	}, [categoryFromUrl]);
+
+	// Filter products based on search term and category
 	useEffect(() => {
 		const filtered = products.filter(
 			(product) =>
 				product?.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-				(!selectedCategory || product?.categories.includes(selectedCategory)) &&
-				(selectedTags.length === 0 ||
-					selectedTags.every((tag) => product?.tags.includes(tag)))
+				(!selectedCategory ||
+					product?.categories
+						.map((category) => category.toLowerCase()) // Convert product categories to lowercase
+						.includes(selectedCategory.toLowerCase())) // Compare with lowercase query param
 		);
 		setFilteredProducts(filtered);
-	}, [searchTerm, selectedCategory, selectedTags, products]);
-
-	const handleSearch = async () => {
-		setLoading(true);
-		try {
-			const results = await searchProducts(searchTerm);
-			setProducts(results);
-			setFilteredProducts(results);
-		} catch (err) {
-			setError('Search failed');
-		}
-		setLoading(false);
-	};
+	}, [searchTerm, selectedCategory, products]);
 
 	const handleCategoryChange = (category) => {
-		setSelectedCategory(category === selectedCategory ? '' : category);
+		const newCategory = category === selectedCategory ? '' : category;
+		router.push(`/store?category=${encodeURIComponent(newCategory)}`); // Navigate using query params
 	};
 
-	const handleTagChange = (tag) => {
-		setSelectedTags((prev) =>
-			prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]
-		);
-	};
-
-	if (error)
+	if (error) {
 		return (
 			<div className='flex items-center justify-center h-screen text-red-500'>
 				Error: {error}
 			</div>
 		);
+	}
 
 	return (
-		<div className='container px-4 py-8 mx-auto'>
-			<div className='flex flex-col gap-4 mb-8 sm:flex-row'>
-				<Input
-					type='text'
-					value={searchTerm}
-					onChange={(e) => setSearchTerm(e.target.value)}
-					placeholder='Search products'
-					className='flex-grow'
-				/>
-				<Button onClick={handleSearch} className='w-full sm:w-auto'>
-					Search
-				</Button>
-			</div>
-
-			<div className='grid grid-cols-1 gap-8 lg:grid-cols-4'>
-				<div className='space-y-8 lg:sticky lg:top-4 lg:self-start'>
-					<div className='p-6 bg-white rounded-lg shadow'>
-						<h3 className='mb-4 text-lg font-semibold'>Categories</h3>
-						<div className='space-y-2'>
-							{categories.map((category) => (
-								<div key={category} className='flex items-center space-x-2'>
-									<Checkbox
-										id={category}
-										checked={selectedCategory === category}
-										onCheckedChange={() => handleCategoryChange(category)}
-									/>
-									<Label htmlFor={category} className='cursor-pointer'>
-										{category}
-									</Label>
-								</div>
-							))}
-						</div>
-					</div>
-					<div className='p-6 bg-white rounded-lg shadow'>
-						<h3 className='mb-4 text-lg font-semibold'>Tags</h3>
-						<div className='space-y-2'>
-							{tags.map((tag) => (
-								<div key={tag} className='flex items-center space-x-2'>
-									<Checkbox
-										id={tag}
-										checked={selectedTags.includes(tag)}
-										onCheckedChange={() => handleTagChange(tag)}
-									/>
-									<Label htmlFor={tag} className='cursor-pointer'>
-										{tag}
-									</Label>
-								</div>
-							))}
-						</div>
-					</div>
+		<>
+			<motion.h1
+				className='container mt-8 text-3xl font-medium text-gray-800'
+				initial={{ opacity: 0, y: -50 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.5 }}
+			>
+				Our Curated Products
+			</motion.h1>
+			<div className='container px-4 py-8 mx-auto'>
+				<div className='flex flex-col gap-4 mb-8 sm:flex-row'>
+					<Input
+						type='text'
+						value={searchTerm}
+						onChange={(e) => setSearchTerm(e.target.value)}
+						placeholder='Search products'
+						className='flex-grow'
+					/>
 				</div>
 
-				<div className='lg:col-span-3'>
-					<motion.div
-						className='grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3'
-						layout
-					>
-						<AnimatePresence>
-							{loading
-								? Array(6)
-										.fill(0)
-										.map((_, index) => <ProductCardSkeleton key={index} />)
-								: filteredProducts.map((product) => (
-										<ProductCard key={product?.$id} product={product} />
-								  ))}
-						</AnimatePresence>
-					</motion.div>
+				<div className='flex flex-wrap gap-2 mb-4'>
+					{categories.map((category) => (
+						<Badge
+							key={category}
+							variant={selectedCategory === category ? 'default' : 'outline'}
+							className='cursor-pointer'
+							onClick={() => handleCategoryChange(category)}
+						>
+							{category}
+						</Badge>
+					))}
 				</div>
-			</div>
 
+				<motion.div
+					className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+					layout
+				>
+					<AnimatePresence>
+						{loading
+							? Array(8)
+									.fill(0)
+									.map((_, index) => <ProductCardSkeleton key={index} />)
+							: filteredProducts.map((product) => (
+									<ProductCard key={product?.$id} product={product} />
+							  ))}
+					</AnimatePresence>
+				</motion.div>
+			</div>
 			<StickyCart />
-		</div>
+		</>
 	);
 };
 

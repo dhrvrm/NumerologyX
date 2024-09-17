@@ -18,12 +18,14 @@ const Header = () => {
 
 	return (
 		<header className='sticky top-0 z-50 flex items-center justify-between px-4 py-2 bg-white border-b-2 md:py-4 border-grey-50 md:px-10'>
-			<Link href='/' className='flex items-center'>
+			<Link href='/' className='flex items-center' title='Home Page Link'>
 				<Image
-					src='/images/adept-numero-logo.png'
-					alt='NumerelogyX Logo'
+					src='/images/logo/adept-numero.webp'
+					alt='Adept Numero Company Logo'
+					title='Logo'
 					width={150}
 					height={50}
+					quality={100}
 					className='w-auto h-12 md:h-10'
 				/>
 			</Link>

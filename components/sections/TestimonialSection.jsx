@@ -63,8 +63,8 @@ export default function TestimonialsSection() {
 				{testimonials.map((testimonial, index) => (
 					<SwiperSlide key={index}>
 						<Card className='h-full overflow-hidden bg-white rounded-lg shadow-lg'>
-							<CardContent className='flex flex-col justify-between h-full p-6 min-h-40'>
-								<p className='mb-4 text-gray-600'>
+							<CardContent className='flex flex-col justify-between h-full p-6 min-h-48'>
+								<p className='mb-4 text-gray-600 line-clamp-4 '>
 									&quot;{testimonial.text}&quot;
 								</p>
 								<p className='font-semibold text-orange-600'>

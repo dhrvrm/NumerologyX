@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { consultations } from '../../lib/Consulations';
 
 export default function Footer() {
 	return (
@@ -10,18 +11,27 @@ export default function Footer() {
 					<div>
 						<h3 className='mb-4 text-lg font-semibold'>Shop</h3>
 						<ul className='space-y-2'>
-							{['Raw Stone', 'Mala', 'Bracelet', 'Pendant', 'Ring'].map(
-								(item) => (
-									<li key={item}>
-										<Link
-											href={`/store/collection/${item.toLowerCase()}`}
-											className='transition-colors duration-200 hover:text-gray-900'
-										>
-											{item}
-										</Link>
-									</li>
-								)
-							)}
+							{[
+								'Raw Stone',
+								'Pendant',
+								'Bracelet',
+								'Decor',
+								'Rudraksha',
+								'Tree',
+								'Mala',
+							].map((item) => (
+								<li key={item}>
+									<Link
+										href={{
+											pathname: '/store',
+											query: { category: item }, // Pass the original category name
+										}}
+										className='transition-colors duration-200 hover:text-gray-900'
+									>
+										{item}
+									</Link>
+								</li>
+							))}
 						</ul>
 					</div>
 
@@ -29,22 +39,13 @@ export default function Footer() {
 					<div>
 						<h3 className='mb-4 text-lg font-semibold'>Consultations</h3>
 						<ul className='space-y-2'>
-							{[
-								'Numerology Consultation',
-								'Name Correction Consultation',
-								'Relationship Consultation',
-								'General Consultation',
-								'Mobile Numerology Consultation',
-								'Yantra Recommnedation',
-							].map((item) => (
-								<li key={item}>
+							{consultations.map((consultation) => (
+								<li key={consultation.title}>
 									<Link
-										href={`/consultations/${item
-											.toLowerCase()
-											.replace(' ', '-')}`}
+										href={consultation.link}
 										className='transition-colors duration-200 hover:text-gray-900'
 									>
-										{item}
+										{consultation.title}
 									</Link>
 								</li>
 							))}
@@ -96,7 +97,7 @@ export default function Footer() {
 				<div className='pt-8 mt-12 border-t border-gray-200'>
 					<h3 className='mb-4 text-lg font-semibold'>Contact us</h3>
 					<p className='mb-4'>
-						Questions? We&apos;re here for you Monday - Saturday 10am-6pm IST.
+						Questions? We&apos;re here for you Monday - Friday 10am-6pm IST.
 					</p>
 					<ul className='space-y-2'>
 						<li>

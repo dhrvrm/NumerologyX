@@ -11,41 +11,41 @@ import { ArrowRight } from 'lucide-react';
 import GetStartedButton from '../animata/button/get-started-button';
 import Image from 'next/image';
 
-const consultations = [
+const problems = [
 	{
 		title: 'Career and Finance',
 		description: 'Navigate Your Career and Finances with Confidence',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/career-finance',
 	},
 	{
 		title: 'Relationships and Love',
 		description: 'Enhance Your Relationships and Love Life',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/relationships-love',
 	},
 	{
 		title: 'Personal Development',
 		description: 'Discover Your True Self and Achieve Your Goals',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/personal-development',
 	},
 	{
 		title: 'Health and Wellbeing',
 		description: 'Prioritize Your Health and Wellbeing',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/health-wellbeing',
 	},
 	{
 		title: 'Life Events and Decisions',
 		description: 'Make Informed Life Decisions with Confidence',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/life-events-decisions',
 	},
 	{
 		title: 'Luck and Fortune',
 		description: 'Harness Your Personal Luck and Fortune',
-		image: '/images/services/career-service.jpg',
+		image: '/images/services/vedic-remedies.webp',
 		href: '/consultations/luck-fortune',
 	},
 ];
@@ -72,13 +72,13 @@ const ServiceOverviewSection = () => {
 			</div>
 
 			<div className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6'>
-				{consultations.map((consultation, index) => (
-					<Link key={index} href={consultation.href} className='group'>
+				{problems.map((problem, index) => (
+					<Link key={index} href={problem.href} className='group'>
 						<Card className='h-full transition-transform duration-300 ease-in-out transform hover:scale-105'>
 							<CardHeader className='p-0'>
 								<Image
-									src={consultation.image}
-									alt={consultation.title}
+									src={problem.image}
+									alt={problem.title}
 									width={150}
 									height={100}
 									className='object-cover w-full h-40 rounded-t-lg'
@@ -86,10 +86,10 @@ const ServiceOverviewSection = () => {
 							</CardHeader>
 							<CardContent className='p-4'>
 								<CardTitle className='mb-2 text-lg leading-none '>
-									{consultation.title}
+									{problem.title}
 								</CardTitle>
 								<CardDescription className='text-sm'>
-									{consultation.description}
+									{problem.description}
 								</CardDescription>
 							</CardContent>
 							{/* <CardFooter className='p-4 pt-0'>

@@ -15,14 +15,16 @@ export default function AboutPage() {
 			<header className='px-4 py-12 text-orange-600 bg-gradient-to-r from-orange-100 to-orange-200 sm:px-6 lg:px-8'>
 				<div className='max-w-4xl mx-auto text-center'>
 					<h1 className='mb-2 text-4xl font-bold'>Prakritii Vermaa</h1>
-					<p className='text-xl'>Unlocking Your Potential Through Numerology</p>
+					<p className='text-xl'>
+						Achieve and Excel through cosmic compass of numbers
+					</p>
 				</div>
 			</header>
 
 			<main className='max-w-4xl px-4 py-12 mx-auto sm:px-6 lg:px-8'>
 				<div className='grid items-center grid-cols-1 gap-12 mb-16 md:grid-cols-2'>
 					<Image
-						src='/images/prakriti-hero-600.png'
+						src='/images/prakriti-about.jpg'
 						alt='Prakritii Vermaa'
 						width={400}
 						height={400}
@@ -34,7 +36,7 @@ export default function AboutPage() {
 							About Me
 						</h2>
 						<p className='mb-4 text-lg'>
-							With over 15 years of experience in numerology, I&apos;ve helped
+							With over 10 years of experience in numerology, I&apos;ve helped
 							thousands of individuals unlock their true potential and find
 							their path in life.
 						</p>
@@ -97,7 +99,7 @@ export default function AboutPage() {
 								<h3 className='mb-2 text-xl font-semibold'>
 									Certified Numerology Expert
 								</h3>
-								<p>Recognized by the International Numerology Association</p>
+								<p>Trusted by clients worldwide</p>
 							</CardContent>
 						</Card>
 						<Card className='bg-orange-50'>
