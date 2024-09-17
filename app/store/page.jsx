@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; // For managing navigation and query params
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
@@ -125,7 +125,7 @@ const ProductCardSkeleton = () => (
 	</Card>
 );
 
-const StorePage = () => {
+const Store = () => {
 	const [products, setProducts] = useState([]);
 	const [filteredProducts, setFilteredProducts] = useState([]);
 	const [searchTerm, setSearchTerm] = useState('');
@@ -246,6 +246,14 @@ const StorePage = () => {
 			</div>
 			<StickyCart />
 		</>
+	);
+};
+
+const StorePage = () => {
+	return (
+		<Suspense fallback={<ProductCardSkeleton />}>
+			<Store />
+		</Suspense>
 	);
 };
 
