@@ -97,7 +97,6 @@ const ProductPageClient = ({ product }) => {
 	const handleAddToCart = () => {
 		if (product && quantity <= product.quantity_available) {
 			addToCart(product, quantity);
-			console.log(product, quantity);
 		} else {
 			alert('Insufficient stock');
 		}

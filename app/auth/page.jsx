@@ -50,15 +50,9 @@ export default function PhoneSignIn() {
 	useEffect(() => {
 		if (user !== null) {
 			// Redirect to referrer URL or homepage
-			console.log(user);
-
 			router.push(ref || '/');
 		}
 	}, [user, router, ref]);
-
-	useEffect(() => {
-		console.log(user);
-	}, []);
 
 	// Validate phone number format
 	const validatePhoneNumber = (phone) => {
