@@ -160,7 +160,7 @@ function EmptyCart() {
 			<p className='mt-2 text-gray-500'>
 				Looks like you haven&apos;t added any items to your cart yet.
 			</p>
-			<Link href='/' passHref>
+			<Link href='/store' passHref>
 				<Button className='mt-6'>Start Shopping</Button>
 			</Link>
 		</div>

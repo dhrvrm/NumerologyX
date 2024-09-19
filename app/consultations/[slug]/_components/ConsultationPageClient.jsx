@@ -1,15 +1,57 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle, Sparkles } from 'lucide-react';
+import { ArrowLeft, CheckCircle } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import { Card, CardContent } from '../../../../components/ui/card';
+import { toast } from '../../../../components/ui/use-toast';
+import Image from 'next/image';
+import { databases } from '../../../../lib/appwrite/ecomDatabase';
+import { getDatabaseID, getSlotsCollectionID } from '../../../../lib/constants';
+import { Query } from 'appwrite';
+import { Toaster } from '../../../../components/ui/toaster';
+import { ConsultationDialog } from './ConsulationDialog';
 
 export default function ConsultationPageClient({ consultation }) {
-	const [isHovered, setIsHovered] = useState(false);
+	const [availableSlots, setAvailableSlots] = useState([]);
+
+	useEffect(() => {
+		fetchAvailableSlots();
+	}, []);
+
+	const fetchAvailableSlots = async () => {
+		try {
+			const now = new Date();
+			const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000); // Add 2 hours to current time
+
+			const response = await databases.listDocuments(
+				getDatabaseID(),
+				getSlotsCollectionID(),
+				[
+					Query.equal('available', true),
+					Query.greaterThan('startTime', twoHoursLater), // Fetch slots where startTime is greater than 2 hours from now
+					Query.orderAsc('startTime'),
+					Query.limit(30),
+				]
+			);
+			setAvailableSlots(response.documents);
+			console.log(response.documents);
+		} catch (error) {
+			console.error('Error fetching available slots:', error);
+			toast({
+				title: 'Error',
+				description: 'Failed to fetch available slots. Please try again.',
+				variant: 'destructive',
+			});
+		}
+	};
+
+	const handleBookingComplete = () => {
+		// Refresh available slots after booking
+		fetchAvailableSlots();
+	};
 
 	return (
 		<div className='min-h-screen px-4 py-12 bg-gradient-to-br from-gray-100 to-gray-200 sm:px-6 lg:px-8'>
@@ -49,30 +91,18 @@ export default function ConsultationPageClient({ consultation }) {
 								<div className='flex flex-wrap items-center justify-between gap-2 mb-6'>
 									<div>
 										<span className='text-xl font-bold text-gray-800'>
-											<span className=''>Energy Exchange:</span> ₹
-											{consultation.currentPrice}
+											Energy Exchange: ₹{consultation.currentPrice}
 										</span>
 										<span className='ml-2 text-sm text-gray-500 line-through'>
 											₹{consultation.actualPrice}
 										</span>
 									</div>
 								</div>
-								<motion.div
-									whileHover={{ scale: 1.05 }}
-									whileTap={{ scale: 0.95 }}
-								>
-									<Button
-										size='lg'
-										className='w-full text-white transition-all duration-300 bg-orange-600 hover:bg-orange-700'
-										onMouseEnter={() => setIsHovered(true)}
-										onMouseLeave={() => setIsHovered(false)}
-									>
-										{isHovered
-											? 'Transform Your Life Now'
-											: 'Book Your Consultation'}
-										<Sparkles className='w-5 h-5 ml-2' />
-									</Button>
-								</motion.div>
+								<ConsultationDialog
+									consultation={consultation}
+									availableSlots={availableSlots}
+									onBookingComplete={handleBookingComplete}
+								/>
 							</CardContent>
 						</Card>
 					</motion.div>
@@ -128,6 +158,7 @@ export default function ConsultationPageClient({ consultation }) {
 					</motion.div>
 				</div>
 			</div>
+			<Toaster />
 		</div>
 	);
 }
