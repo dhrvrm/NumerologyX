@@ -14,8 +14,10 @@ const StickyCart = () => {
 		<div className='fixed bottom-0 left-0 right-0 z-50 p-2 text-orange-800 shadow-lg bg-amber-50 md:p-4'>
 			<div className='container flex items-center justify-between mx-auto'>
 				<div className='flex items-center gap-2'>
-					<p className='text-lg font-semibold'>Cart ({totalItems} items)</p>
-					<p className='text-lg font-semibold'>
+					<p className='text-sm font-semibold md:text-lg'>
+						Cart ({totalItems} items)
+					</p>
+					<p className='text-sm font-semibold md:text-lg'>
 						Total: ${totalAmount.toFixed(2)}
 					</p>
 				</div>

@@ -8,36 +8,21 @@ import { Button } from '../../../../components/ui/button';
 import { Card, CardContent } from '../../../../components/ui/card';
 import { toast } from '../../../../components/ui/use-toast';
 import Image from 'next/image';
-import { databases } from '../../../../lib/appwrite/ecomDatabase';
-import { getDatabaseID, getSlotsCollectionID } from '../../../../lib/constants';
-import { Query } from 'appwrite';
 import { Toaster } from '../../../../components/ui/toaster';
 import { ConsultationDialog } from './ConsulationDialog';
-
+import { fetchAvailableSlots } from '../../../../lib/appwrite/consultationDatabase';
 export default function ConsultationPageClient({ consultation }) {
 	const [availableSlots, setAvailableSlots] = useState([]);
 
 	useEffect(() => {
-		fetchAvailableSlots();
+		fetchSlots();
 	}, []);
 
-	const fetchAvailableSlots = async () => {
+	const fetchSlots = async () => {
 		try {
-			const now = new Date();
-			const twoHoursLater = new Date(now.getTime() + 2 * 60 * 60 * 1000); // Add 2 hours to current time
-
-			const response = await databases.listDocuments(
-				getDatabaseID(),
-				getSlotsCollectionID(),
-				[
-					Query.equal('available', true),
-					Query.greaterThan('startTime', twoHoursLater), // Fetch slots where startTime is greater than 2 hours from now
-					Query.orderAsc('startTime'),
-					Query.limit(30),
-				]
-			);
-			setAvailableSlots(response.documents);
-			console.log(response.documents);
+			const slots = await fetchAvailableSlots(); // Fetch available slots from database function
+			setAvailableSlots(slots);
+			console.log(slots);
 		} catch (error) {
 			console.error('Error fetching available slots:', error);
 			toast({
@@ -50,7 +35,7 @@ export default function ConsultationPageClient({ consultation }) {
 
 	const handleBookingComplete = () => {
 		// Refresh available slots after booking
-		fetchAvailableSlots();
+		fetchSlots();
 	};
 
 	return (

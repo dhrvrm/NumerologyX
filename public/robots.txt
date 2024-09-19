@@ -1,4 +1,10 @@
 User-agent: *
+
+Disallow: /auth
+Disallow: /checkout
+Disallow: /track-order
+Disallow: /booking-status
+
 Allow: /
 
 Sitemap: https://www.adeptnumero.in/sitemap.xml 

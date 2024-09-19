@@ -223,8 +223,6 @@ const ProductPageClient = ({ product }) => {
 							<TabsList>
 								<TabsTrigger value='description'>Description</TabsTrigger>
 								<TabsTrigger value='specs'>Specifications</TabsTrigger>
-								<TabsTrigger value='contents'>What&apos;s Included</TabsTrigger>
-								<TabsTrigger value='legal'>Legal Information</TabsTrigger>
 							</TabsList>
 							<TabsContent value='description'>
 								<p className='text-gray-500 dark:text-gray-400'>
@@ -233,22 +231,10 @@ const ProductPageClient = ({ product }) => {
 							</TabsContent>
 							<TabsContent value='specs'>
 								<ul className='pl-5 text-gray-500 list-disc dark:text-gray-400'>
-									{/* {product.specifications.map((spec, index) => (
+									{product?.specifications?.map((spec, index) => (
 										<li key={index}>{spec}</li>
-									))} */}
+									))}
 								</ul>
-							</TabsContent>
-							<TabsContent value='contents'>
-								<ul className='pl-5 text-gray-500 list-disc dark:text-gray-400'>
-									{/* {product.contents.map((item, index) => (
-										<li key={index}>{item}</li>
-									))} */}
-								</ul>
-							</TabsContent>
-							<TabsContent value='legal'>
-								{/* <p className='text-gray-500 dark:text-gray-400'>
-									{product.legal_info}
-								</p> */}
 							</TabsContent>
 						</Tabs>
 
@@ -257,6 +243,26 @@ const ProductPageClient = ({ product }) => {
 							features={product?.features}
 							careInstructions={product?.care_instructions}
 						/>
+
+						<Tabs defaultValue='description' className='w-full'>
+							<TabsList>
+								<TabsTrigger value='contents'>What&apos;s Included</TabsTrigger>
+								<TabsTrigger value='legal'>Legal Information</TabsTrigger>
+							</TabsList>
+
+							<TabsContent value='contents'>
+								<ul className='pl-5 text-gray-500 list-disc dark:text-gray-400'>
+									{product?.contents?.map((item, index) => (
+										<li key={index}>{item}</li>
+									))}
+								</ul>
+							</TabsContent>
+							<TabsContent value='legal'>
+								<p className='text-gray-500 dark:text-gray-400'>
+									{product.legal_info}
+								</p>
+							</TabsContent>
+						</Tabs>
 					</div>
 				</div>
 			</div>

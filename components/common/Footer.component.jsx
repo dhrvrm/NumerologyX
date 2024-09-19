@@ -56,18 +56,24 @@ export default function Footer() {
 					<div>
 						<h3 className='mb-4 text-lg font-semibold'>Company</h3>
 						<ul className='space-y-2'>
-							{['About', 'Blogs', 'FAQs', 'Booking Status', 'Track Order'].map(
-								(item) => (
-									<li key={item}>
-										<Link
-											href={`/${item.toLowerCase().replace(' ', '-')}`}
-											className='transition-colors duration-200 hover:text-gray-900'
-										>
-											{item}
-										</Link>
-									</li>
-								)
-							)}
+							{['About', 'Blogs', 'FAQs', 'Track Order'].map((item) => (
+								<li key={item}>
+									<Link
+										href={`/${item.toLowerCase().replace(' ', '-')}`}
+										className='transition-colors duration-200 hover:text-gray-900'
+									>
+										{item}
+									</Link>
+								</li>
+							))}
+							<li>
+								<Link
+									href={`/consultations/booking-status`}
+									className='transition-colors duration-200 hover:text-gray-900'
+								>
+									Booking Status
+								</Link>
+							</li>
 						</ul>
 					</div>
 

@@ -230,10 +230,10 @@ export default function CheckoutPage() {
 	};
 
 	return (
-		<div className='container p-6 mx-auto'>
-			<h1 className='mb-6 text-3xl font-bold'>Checkout</h1>
-			<div className='grid gap-6 lg:grid-cols-2'>
-				<Card>
+		<div className='container px-4 py-6 mx-auto sm:px-6 lg:px-8'>
+			<h1 className='mb-6 text-2xl font-bold sm:text-3xl'>Checkout</h1>
+			<div className='grid gap-6 md:grid-cols-2'>
+				<Card className='w-full'>
 					<CardHeader>
 						<CardTitle>Shipping Information</CardTitle>
 					</CardHeader>
@@ -333,7 +333,7 @@ export default function CheckoutPage() {
 						</form>
 					</CardContent>
 				</Card>
-				<Card>
+				<Card className='w-full'>
 					<CardHeader>
 						<CardTitle>Order Summary</CardTitle>
 					</CardHeader>

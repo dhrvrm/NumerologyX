@@ -52,19 +52,22 @@ export default function CartPage() {
 	}
 
 	return (
-		<div className='container p-6 mx-auto'>
-			<h1 className='mb-6 text-3xl font-bold'>Your Cart</h1>
-			<div className='grid gap-6 lg:grid-cols-3'>
+		<div className='container p-4 mx-auto md:p-6'>
+			<h1 className='mb-6 text-2xl font-bold md:text-3xl'>Your Cart</h1>
+			<div className='grid gap-6 md:grid-cols-3'>
 				{/* Cart Items List */}
-				<Card className='lg:col-span-2'>
+				<Card className='w-full md:col-span-2'>
 					<CardHeader>
 						<CardTitle>Cart Items ({totalItems})</CardTitle>
 					</CardHeader>
 					<CardContent>
 						<ScrollArea className='h-[calc(100vh-20rem)]'>
 							{cartItems.map((item) => (
-								<div key={item.$id} className='flex items-center py-4'>
-									<div className='flex-shrink-0 mr-4'>
+								<div
+									key={item.$id}
+									className='flex flex-col py-4 md:flex-row md:items-center'
+								>
+									<div className='flex items-center mb-4 md:mb-0 md:mr-4'>
 										<Image
 											src={
 												item.images[0] || `/placeholder.svg?height=80&width=80`
@@ -74,44 +77,46 @@ export default function CartPage() {
 											height={80}
 											className='object-cover rounded-md'
 										/>
+										<div className='ml-4'>
+											<h2 className='font-semibold'>{item.title}</h2>
+											<p className='text-sm text-gray-500'>
+												₹{item.current_price.toFixed(2)} each
+											</p>
+										</div>
 									</div>
-									<div className='flex-1'>
-										<h2 className='font-semibold'>{item.title}</h2>
-										<p className='text-sm text-gray-500'>
-											₹{item.current_price.toFixed(2)} each
+									<div className='flex items-center justify-between md:ml-auto'>
+										<div className='flex items-center gap-2'>
+											<Button
+												variant='outline'
+												size='icon'
+												onClick={() => handleDecrement(item)}
+												aria-label='Decrease quantity'
+											>
+												<Minus className='w-4 h-4' />
+											</Button>
+											<span className='w-8 text-center'>{item.quantity}</span>
+											<Button
+												variant='outline'
+												size='icon'
+												onClick={() => handleIncrement(item)}
+												aria-label='Increase quantity'
+											>
+												<Plus className='w-4 h-4' />
+											</Button>
+										</div>
+										<p className='w-24 font-semibold text-right'>
+											₹{(item.current_price * item.quantity).toFixed(2)}
 										</p>
-									</div>
-									<div className='flex items-center gap-2'>
 										<Button
-											variant='outline'
+											variant='ghost'
 											size='icon'
-											onClick={() => handleDecrement(item)}
-											aria-label='Decrease quantity'
+											className='ml-4'
+											onClick={() => handleRemove(item)}
+											aria-label='Remove item'
 										>
-											<Minus className='w-4 h-4' />
-										</Button>
-										<span className='w-8 text-center'>{item.quantity}</span>
-										<Button
-											variant='outline'
-											size='icon'
-											onClick={() => handleIncrement(item)}
-											aria-label='Increase quantity'
-										>
-											<Plus className='w-4 h-4' />
+											<Trash2 className='w-4 h-4' />
 										</Button>
 									</div>
-									<p className='w-24 font-semibold text-right'>
-										₹{(item.current_price * item.quantity).toFixed(2)}
-									</p>
-									<Button
-										variant='ghost'
-										size='icon'
-										className='ml-4'
-										onClick={() => handleRemove(item)}
-										aria-label='Remove item'
-									>
-										<Trash2 className='w-4 h-4' />
-									</Button>
 								</div>
 							))}
 						</ScrollArea>
@@ -119,7 +124,7 @@ export default function CartPage() {
 				</Card>
 
 				{/* Order Summary */}
-				<Card>
+				<Card className='w-full'>
 					<CardHeader>
 						<CardTitle>Order Summary</CardTitle>
 					</CardHeader>

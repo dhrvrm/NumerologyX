@@ -8,6 +8,7 @@ import {
 import { Button } from '../../components/ui/button';
 import { StarIcon, AwardIcon, Users, Target } from 'lucide-react';
 import ServicesOffered from './_components/ServicesOffered.component';
+import Link from 'next/link';
 
 export default function AboutPage() {
 	return (
@@ -45,9 +46,11 @@ export default function AboutPage() {
 							impact on my own life. Since then, I&apos;ve dedicated myself to
 							mastering this ancient science and sharing its wisdom with others.
 						</p>
-						<Button className='px-4 py-2 font-bold text-white bg-orange-600 rounded-full hover:bg-orange-700'>
-							Book a Consultation
-						</Button>
+						<Link href='/consultations'>
+							<Button className='px-4 py-2 font-bold text-white bg-orange-600 hover:bg-orange-700'>
+								Book a Consultation
+							</Button>
+						</Link>
 					</div>
 				</div>
 
@@ -160,9 +163,11 @@ export default function AboutPage() {
 						Let&apos;s embark on this enlightening journey together and unlock
 						the transformative power of numbers in your life!
 					</p>
-					<Button className='px-6 py-3 text-lg font-bold text-white bg-orange-600 rounded-full hover:bg-orange-700'>
-						Schedule Your Reading
-					</Button>
+					<Link href='/consultations'>
+						<Button className='px-6 py-3 text-lg font-bold text-white bg-orange-600 hover:bg-orange-700'>
+							Schedule Your Reading
+						</Button>
+					</Link>
 				</div>
 			</main>
 		</div>
