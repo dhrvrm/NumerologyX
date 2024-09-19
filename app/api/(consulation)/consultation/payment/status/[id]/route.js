@@ -44,7 +44,7 @@ export async function POST(req, { params }) {
 
 		// Fetch the booking using merchantTransactionId
 		const booking = await getBookingByMerchantTransactionId(
-			merchantTransactionId
+			result.data.merchantTransactionId
 		);
 
 		// Check if booking is undefined and throw an error
@@ -60,11 +60,7 @@ export async function POST(req, { params }) {
 		const paymentStatus = result.code === 'PAYMENT_SUCCESS' ? 'PAID' : 'FAILED';
 
 		// Update the booking with PhonePe's transactionId and payment status
-		await updateBookingWithTransactionId(
-			bookingId,
-			result.data.transactionId,
-			paymentStatus
-		);
+		await updateBookingWithTransactionId(bookingId, paymentStatus);
 
 		// If payment was successful, update the slot availability
 		if (paymentStatus === 'PAID') {
