@@ -10,7 +10,7 @@ import { toast } from '../../../../components/ui/use-toast';
 import Image from 'next/image';
 import { Toaster } from '../../../../components/ui/toaster';
 import { ConsultationDialog } from './ConsulationDialog';
-import { fetchAvailableSlots } from '../../../../lib/appwrite/consultationDatabase';
+
 export default function ConsultationPageClient({ consultation }) {
 	const [availableSlots, setAvailableSlots] = useState([]);
 
@@ -20,9 +20,12 @@ export default function ConsultationPageClient({ consultation }) {
 
 	const fetchSlots = async () => {
 		try {
-			const slots = await fetchAvailableSlots(); // Fetch available slots from database function
+			const response = await fetch('/api/consultation/slots');
+			if (!response.ok) {
+				throw new Error('Failed to fetch available slots');
+			}
+			const slots = await response.json();
 			setAvailableSlots(slots);
-			console.log(slots);
 		} catch (error) {
 			console.error('Error fetching available slots:', error);
 			toast({

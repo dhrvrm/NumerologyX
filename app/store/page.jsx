@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation'; // For managing navigation and query params
+import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { fetchAllProducts } from '../../lib/appwrite/database'; // Fetch product data
+import { fetchAllProducts } from '../../lib/appwrite/database';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
@@ -12,6 +12,8 @@ import { Badge } from '../../components/ui/badge';
 import { Skeleton } from '../../components/ui/skeleton';
 import StickyCart from './_components/StickyCart';
 import { useCartStore } from '../../lib/zustand/cartStore';
+import { toast } from '../../components/ui/use-toast';
+import { Toaster } from '../../components/ui/toaster';
 
 const categories = [
 	'Raw Stone',
@@ -37,6 +39,11 @@ const ProductCard = ({ product }) => {
 		e.stopPropagation();
 		if (product.quantity_available > 0) {
 			addToCart(product, 1);
+			toast({
+				title: 'Added to Cart',
+				description: `${product.title} has been added to your cart.`,
+				duration: 2000,
+			});
 		}
 	};
 
@@ -133,11 +140,10 @@ const Store = () => {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	const searchParams = useSearchParams(); // To access query params
+	const searchParams = useSearchParams();
 	const router = useRouter();
-	const categoryFromUrl = searchParams.get('category') || ''; // Get the category from the URL
+	const categoryFromUrl = searchParams.get('category') || '';
 
-	// Fetch products on mount
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -164,27 +170,25 @@ const Store = () => {
 		fetchData();
 	}, []);
 
-	// Update selected category when the URL changes
 	useEffect(() => {
 		setSelectedCategory(categoryFromUrl);
 	}, [categoryFromUrl]);
 
-	// Filter products based on search term and category
 	useEffect(() => {
 		const filtered = products.filter(
 			(product) =>
 				product?.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
 				(!selectedCategory ||
 					product?.categories
-						.map((category) => category.toLowerCase()) // Convert product categories to lowercase
-						.includes(selectedCategory.toLowerCase())) // Compare with lowercase query param
+						.map((category) => category.toLowerCase())
+						.includes(selectedCategory.toLowerCase()))
 		);
 		setFilteredProducts(filtered);
 	}, [searchTerm, selectedCategory, products]);
 
 	const handleCategoryChange = (category) => {
 		const newCategory = category === selectedCategory ? '' : category;
-		router.push(`/store?category=${encodeURIComponent(newCategory)}`); // Navigate using query params
+		router.push(`/store?category=${encodeURIComponent(newCategory)}`);
 	};
 
 	if (error) {
@@ -230,7 +234,7 @@ const Store = () => {
 				</div>
 
 				<motion.div
-					className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+					className='grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
 					layout
 				>
 					<AnimatePresence>
@@ -245,6 +249,7 @@ const Store = () => {
 				</motion.div>
 			</div>
 			<StickyCart />
+			<Toaster />
 		</>
 	);
 };
