@@ -225,7 +225,7 @@ const Store = () => {
 						<Badge
 							key={category}
 							variant={selectedCategory === category ? 'default' : 'outline'}
-							className='cursor-pointer'
+							className='cursor-pointer select-none touch-manipulation'
 							onClick={() => handleCategoryChange(category)}
 						>
 							{category}
