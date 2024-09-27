@@ -13,14 +13,14 @@ export const metadata = {
 			'Discover authentic gemstones, yantras, and spiritual pendants to amplify your numerology practice. Find energy-infused accessories tailored to your life path.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in/store',
-		image: 'https://www.adeptnumero.in/images/store-og-image.jpg',
+		image: 'https://www.adeptnumero.in/images/social/store-banner.png',
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Mystical Gems & Yantras | AdeptNumero Store',
 		description:
 			'Discover authentic gemstones, yantras, and spiritual pendants to amplify your numerology practice. Find energy-infused accessories tailored to your life path.',
-		image: 'https://www.adeptnumero.in/images/store-twitter-image.jpg',
+		image: 'https://www.adeptnumero.in/images/social/store-banner.png',
 	},
 };
 

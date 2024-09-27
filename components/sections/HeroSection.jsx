@@ -44,7 +44,7 @@ const HeroSection = () => {
 			<div className='mt-[-100px] z-[-1] md:mt-0'>
 				<Image
 					src='/images/prakriti-hero-600.png'
-					alt='Prakriti Verma Ace Numerelogist Picture'
+					alt='Prakritii Vermaa Ace Numerelogist Picture'
 					width={400}
 					height={600}
 					quality={100}

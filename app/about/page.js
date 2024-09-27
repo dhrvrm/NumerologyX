@@ -10,6 +10,29 @@ import { StarIcon, AwardIcon, Users, Target } from 'lucide-react';
 import ServicesOffered from './_components/ServicesOffered.component';
 import Link from 'next/link';
 
+export const metadata = {
+	title: 'Prakritii Vermaa | Numerology Expert',
+	description:
+		'Achieve and excel through the cosmic compass of numbers with Prakritii Vermaa. Over 10 years of experience in helping individuals unlock their true potential through personalized numerology consultations.',
+	keywords:
+		'numerology, numerology expert, life path, name correction, numerology consultations, spiritual guidance, career guidance, personal growth',
+	openGraph: {
+		title: 'Prakritii Vermaa | Numerology Expert',
+		description:
+			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+		type: 'website',
+		url: 'https://www.adeptnumero.in/about',
+		image: 'https://www.adeptnumero.in/images/social/about-banner.png',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Prakritii Vermaa | Numerology Expert',
+		description:
+			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+		image: 'https://www.adeptnumero.in/images/social/about-banner.png',
+	},
+};
+
 export default function AboutPage() {
 	return (
 		<div className='min-h-screen text-gray-800 bg-white'>

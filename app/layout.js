@@ -27,7 +27,7 @@ export const metadata = {
 			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at AdeptNumero.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in',
-		image: 'https://www.adeptnumero.in/images/og-image.jpg',
+		image: 'https://www.adeptnumero.in/images/social/home-banner.png',
 		site_name: 'AdeptNumero.in',
 	},
 	twitter: {
@@ -36,7 +36,7 @@ export const metadata = {
 		title: 'AdeptNumero.in | Expert Numerology Consulation & Mystical Products',
 		description:
 			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at AdeptNumero.in.',
-		image: 'https://www.adeptnumero.in/images/twitter-image.jpg',
+		image: 'https://www.adeptnumero.in/images/social/home-banner.png',
 	},
 	robots: {
 		index: true,
