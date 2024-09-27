@@ -56,16 +56,18 @@ export default function Footer() {
 					<div>
 						<h3 className='mb-4 text-lg font-semibold'>Company</h3>
 						<ul className='space-y-2'>
-							{['About', 'Blogs', 'FAQs', 'Track Order'].map((item) => (
-								<li key={item}>
-									<Link
-										href={`/${item.toLowerCase().replace(' ', '-')}`}
-										className='transition-colors duration-200 hover:text-gray-900'
-									>
-										{item}
-									</Link>
-								</li>
-							))}
+							{['About', 'Blogs', 'FAQs', 'Track Order', 'Contact Us'].map(
+								(item) => (
+									<li key={item}>
+										<Link
+											href={`/${item.toLowerCase().replace(' ', '-')}`}
+											className='transition-colors duration-200 hover:text-gray-900'
+										>
+											{item}
+										</Link>
+									</li>
+								)
+							)}
 							<li>
 								<Link
 									href={`/consultations/booking-status`}
@@ -86,11 +88,11 @@ export default function Footer() {
 								'Shipping Policy',
 								'Refund Policy',
 								'Terms and conditions',
-								'Terms of Service',
+								'Terms of Use',
 							].map((item) => (
 								<li key={item}>
 									<Link
-										href={`/policies/${item.toLowerCase().replace(/ /g, '-')}`}
+										href={`/${item.toLowerCase().replace(/ /g, '-')}`}
 										className='transition-colors duration-200 hover:text-gray-900'
 									>
 										{item}
@@ -120,10 +122,10 @@ export default function Footer() {
 						<li>
 							Email:{' '}
 							<a
-								href='mailto:care@adept.com'
+								href='mailto:support@apdeptnumero.in'
 								className='transition-colors duration-200 hover:text-gray-900'
 							>
-								care@adept.com
+								support@apdeptnumero.in
 							</a>
 						</li>
 						<li>
