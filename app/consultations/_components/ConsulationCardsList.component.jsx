@@ -9,7 +9,6 @@ import {
 	CardContent,
 	CardDescription,
 	CardHeader,
-	CardTitle,
 } from '../../../components/ui/card';
 
 import { consultations } from '../../../lib/Consulations';
