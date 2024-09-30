@@ -11,14 +11,14 @@ export const metadata = {
 			'Unlock the power of numerology with expert consultations by Prakritii Vermaa. Offering name correction, mobile number analysis, business consultations, and more for a harmonious and prosperous life.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in/consultations',
-		image: 'https://www.adeptnumero.in/images/social/home-banner.png',
+		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Numerology Consultations | AdeptNumero',
 		description:
 			'Unlock your potential with expert numerology consultations by Prakritii Vermaa. Services include name correction, mobile number analysis, business consultations, and more.',
-		image: 'https://www.adeptnumero.in/images/social/home-banner.png',
+		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
 	},
 };
 

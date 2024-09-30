@@ -22,14 +22,14 @@ export const metadata = {
 			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in/about',
-		image: 'https://www.adeptnumero.in/images/social/about-banner.png',
+		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Prakritii Vermaa | Numerology Expert',
 		description:
 			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
-		image: 'https://www.adeptnumero.in/images/social/about-banner.png',
+		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
 	},
 };
 
