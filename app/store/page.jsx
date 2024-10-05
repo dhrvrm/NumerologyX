@@ -56,7 +56,7 @@ const ProductCard = ({ product }) => {
 				exit={{ opacity: 0 }}
 				className='cursor-pointer'
 			>
-				<Card className='h-full overflow-hidden'>
+				<Card className='h-full overflow-hidden border-0 bg-stone-50 md:bg-transparent md:border'>
 					<div className='relative'>
 						<motion.div
 							className='relative aspect-square'
@@ -93,8 +93,8 @@ const ProductCard = ({ product }) => {
 							)}
 						</div>
 					</div>
-					<CardContent className='p-4'>
-						<h2 className='text-lg font-semibold line-clamp-1'>
+					<CardContent className='p-2 sm:p-4'>
+						<h2 className='mb-1 text-sm font-semibold sm:text-base min-h-12 line-clamp-2'>
 							{product?.title}
 						</h2>
 						<div className='flex items-baseline gap-2 mt-1'>
@@ -102,7 +102,7 @@ const ProductCard = ({ product }) => {
 								₹{product?.current_price.toFixed(2)}
 							</span>
 							{product.actual_price > product.current_price && (
-								<span className='text-sm text-gray-500 line-through'>
+								<span className='text-xs text-gray-500 line-through'>
 									₹{product?.actual_price.toFixed(2)}
 								</span>
 							)}
@@ -110,7 +110,7 @@ const ProductCard = ({ product }) => {
 						<Button
 							onClick={handleAddToCart}
 							disabled={product.quantity_available <= 0}
-							className='w-full mt-2 bg-orange-600 hover:bg-orange-700'
+							className='w-full py-1 mt-2 text-xs bg-orange-600 hover:bg-orange-700 sm:text-sm sm:py-2'
 						>
 							{product.quantity_available > 0 ? 'Add to Cart' : 'Out of Stock'}
 						</Button>
@@ -234,7 +234,7 @@ const Store = () => {
 				</div>
 
 				<motion.div
-					className='grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
+					className='grid grid-cols-2 gap-1 md:gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
 					layout
 				>
 					<AnimatePresence>
