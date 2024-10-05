@@ -83,7 +83,7 @@ export default function ContactPage() {
 									<span>Instagram</span>
 								</a>
 								<a
-									href='https://youtube.com/@advancnumerologer'
+									href='https://youtube.com/@adeptnumero?si=qS0TSypbKyrfocKT'
 									className='flex items-end gap-2 transition-all duration-300 transform hover:text-red-600 hover:scale-101'
 								>
 									<YoutubeIcon className='w-6 h-6 p-1 rounded-sm bg-slate-100' />

@@ -158,7 +158,7 @@ export default function Footer() {
 						<Instagram className='w-8 h-8' />
 					</a>
 					<a
-						href='https://youtube.com/@advancnumerologer'
+						href='https://youtube.com/@adeptnumero?si=qS0TSypbKyrfocKT'
 						className='text-gray-400 transition-all duration-300 transform hover:text-red-600 hover:scale-110'
 					>
 						<span className='sr-only'>YouTube</span>
