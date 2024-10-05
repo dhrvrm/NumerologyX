@@ -110,6 +110,7 @@ export default function Footer() {
 						Questions? We&apos;re here for you Monday - Friday 10am-6pm IST.
 					</p>
 					<ul className='space-y-2'>
+						<li>Prakriti</li>
 						<li>
 							Phone:{' '}
 							<a

@@ -2,13 +2,11 @@ export default function RefundPolicyPage() {
 	return (
 		<article className='max-w-xl mx-auto my-10 prose'>
 			<h1>Refund and Cancellation Policy</h1>
-
 			<p>
 				At Adept Numero, we value our customers and aim to provide a seamless
 				shopping and consultation experience. Please review our Refund and
 				Cancellation policies below:
 			</p>
-
 			<h2>1. Refunds for Products</h2>
 			<ul>
 				<li>
@@ -38,7 +36,7 @@ export default function RefundPolicyPage() {
 				</li>
 				<li>
 					Refunds, if approved, will be processed within 15 business days of
-					claim acceptance.
+					claim acceptance to your original payment method.
 				</li>
 				<li>
 					Refund amounts do not include delivery charges, which are
@@ -49,7 +47,6 @@ export default function RefundPolicyPage() {
 					bank account provided by the customer.
 				</li>
 			</ul>
-
 			<h2>2. Refunds for Consultation Services</h2>
 			<ul>
 				<li>
@@ -67,7 +64,6 @@ export default function RefundPolicyPage() {
 					of service failure is provided within 10 days of the session date.
 				</li>
 			</ul>
-
 			<h2>3. Cancellation Policy</h2>
 			<ul>
 				<li>
@@ -88,7 +84,6 @@ export default function RefundPolicyPage() {
 					any time with prior notice.
 				</li>
 			</ul>
-
 			<h2>4. Contact Information</h2>
 			<p>
 				If you have any questions or require assistance with refunds or
