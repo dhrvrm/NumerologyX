@@ -27,14 +27,7 @@ export const metadata = {
 			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at AdeptNumero.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in',
-		images: [
-			{
-				url: 'https://www.adeptnumero.in/images/social/home-banner.png',
-				width: 1200,
-				height: 628,
-				alt: 'AdeptNumero Home Banner',
-			},
-		],
+		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
 		site_name: 'AdeptNumero.in',
 	},
 	twitter: {

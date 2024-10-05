@@ -11,14 +11,7 @@ export const metadata = {
 			'Unlock the power of numerology with expert consultations by Prakritii Vermaa. Offering name correction, mobile number analysis, business consultations, and more for a harmonious and prosperous life.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in/consultations',
-		images: [
-			{
-				url: 'https://www.adeptnumero.in/images/social/home-banner.png',
-				width: 1200,
-				height: 628,
-				alt: 'AdeptNumero Home Banner',
-			},
-		],
+		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
