@@ -46,6 +46,17 @@ export async function POST(req, { params }) {
 		const paymentStatus = result.code === 'PAYMENT_SUCCESS' ? 'PAID' : 'FAILED';
 		const orderStatus = paymentStatus === 'PAID' ? 'PROCESSING' : 'CANCELLED';
 
+		if (paymentStatus === 'PAID') {
+			// Call the email API to send order confirmation
+			const emailApiUrl = `${getBaseUrl()}/api/send-order-email/${orderId}`;
+			const emailResponse = await fetch(emailApiUrl, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+		}
+
 		// Update the order with PhonePe's transactionId and payment status
 		await updateOrderWithTransactionId(
 			orderId,

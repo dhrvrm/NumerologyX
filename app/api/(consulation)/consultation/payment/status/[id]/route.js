@@ -65,6 +65,15 @@ export async function POST(req, { params }) {
 		// If payment was successful, update the slot availability
 		if (paymentStatus === 'PAID') {
 			await updateSlotAvailability(booking.startTime, false, bookingId);
+
+			// Call the email API to send booking confirmation
+			const emailApiUrl = `${getBaseUrl()}/api/send-consultation-email/${bookingId}`;
+			const emailResponse = await fetch(emailApiUrl, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
 		}
 
 		// Redirect to booking status page
