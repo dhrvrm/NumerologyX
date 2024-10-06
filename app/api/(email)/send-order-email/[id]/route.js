@@ -1,7 +1,7 @@
 // app/api/send-order-email/[id]/route.ts
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { getOrderByMerchantTransactionId } from '../../../../lib/appwrite/ecomDatabase';
+import { getOrderByMerchantTransactionId } from '../../../../../lib/appwrite/ecomDatabase';
 import OrderEmailTemplate from '../OrderEmailTemplate';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
