@@ -38,7 +38,10 @@ export default function BookingEmailTemplate({ booking }) {
 							</Text>
 							<Text>
 								<strong>Date and Time:</strong>{' '}
-								{moment(booking.startTime).format('DD-MM-YYYY HH:mm A')}
+								{moment(booking.startTime)
+									.tz('Asia/Kolkata')
+									.format('DD-MM-YYYY hh:mm A')}{' '}
+								IST
 							</Text>
 							<Text>
 								<strong>Amount Paid:</strong> ₹{booking.paymentAmount}

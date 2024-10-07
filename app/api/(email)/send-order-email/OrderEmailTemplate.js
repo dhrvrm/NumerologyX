@@ -51,7 +51,7 @@ export default function OrderEmailTemplate({ order }) {
 							Order Items:
 						</Heading>
 						<ul>
-							{order.orderItems.map((item, index) => (
+							{order.orderItems?.map((item, index) => (
 								<li key={index}>
 									{item.productName} x {item.productQuantity} - ₹
 									{item.productprice.toFixed(2)}

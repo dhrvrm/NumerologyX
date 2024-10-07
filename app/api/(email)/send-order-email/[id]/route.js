@@ -1,17 +1,19 @@
 // app/api/send-order-email/[id]/route.ts
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { getOrderByMerchantTransactionId } from '../../../../../lib/appwrite/ecomDatabase';
 import OrderEmailTemplate from '../OrderEmailTemplate';
+import { getBaseUrl } from '../../../../../lib/constants';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function GET(request, { params }) {
 	try {
-		const { id: merchantTransactionId } = params;
+		const { id: orderId } = params;
 
 		// Fetch the order using merchantTransactionId
-		const order = await getOrderByMerchantTransactionId(merchantTransactionId);
+		const response = await fetch(`${getBaseUrl()}/api/orders/${orderId}`);
+		const order = await response.json();
+		console.log('Recived Order Detail:', order);
 
 		if (!order) {
 			return NextResponse.json({ error: 'Order not found' }, { status: 404 });
