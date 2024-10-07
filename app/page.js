@@ -5,6 +5,12 @@ import StoreOverviewSection from '../components/sections/StoreOverviewSection';
 import TestimonialSection from '../components/sections/TestimonialSection';
 import StylishTestimonial from '../components/sections/SingularTestimonial';
 
+export const metadata = {
+	alternates: {
+		canonical: 'https://www.adeptnumero.in',
+	},
+};
+
 export default function Home() {
 	return (
 		<main>

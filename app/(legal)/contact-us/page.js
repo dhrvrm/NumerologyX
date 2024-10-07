@@ -15,6 +15,12 @@ import {
 } from 'lucide-react';
 import { Toaster } from '../../../components/ui/toaster';
 
+export const metadata = {
+	alternates: {
+		canonical: 'https://www.adeptnumero.in/contact-us',
+	},
+};
+
 export default function ContactPage() {
 	return (
 		<div className='container px-4 py-8'>

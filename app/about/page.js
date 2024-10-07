@@ -31,6 +31,9 @@ export const metadata = {
 			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
 	},
+	alternates: {
+		canonical: 'https://www.adeptnumero.in/about',
+	},
 };
 
 export default function AboutPage() {
