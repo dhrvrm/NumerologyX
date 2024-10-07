@@ -11,7 +11,7 @@ export function ProductDescriptionAccordion({
 	careInstructions,
 }) {
 	return (
-		<Accordion type='multiple' collapsible className='w-full'>
+		<Accordion type='multiple' collapsible={true} className='w-full'>
 			{features?.length > 0 && (
 				<AccordionItem value='features'>
 					<AccordionTrigger>Features</AccordionTrigger>

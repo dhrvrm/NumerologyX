@@ -64,8 +64,10 @@ export default function RefundPolicyPage() {
 					of service failure is provided within 10 days of the session date.
 				</li>
 			</ul>
-			<h2>3. Cancellation Policy</h2>
+			<h2>3. Return Policy</h2>
 			<ul>
+				<li>We do not provide return.</li>
+
 				<li>
 					You can cancel your product order as long as its status is
 					&quot;Processing&quot;. Please contact us at{' '}

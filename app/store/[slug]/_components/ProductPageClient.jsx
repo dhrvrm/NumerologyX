@@ -6,7 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import StarRating from '../../../../components/store/StarRating.component';
 import { ProductDescriptionAccordion } from '../../../../components/ui/CollapsingAccordion';
-import { Minus, Plus, ShieldCheck, Truck, CreditCard } from 'lucide-react';
+import {
+	Minus,
+	Plus,
+	ShieldCheck,
+	Truck,
+	CreditCard,
+	AlertTriangle,
+} from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import { Input } from '../../../../components/ui/input';
 import { Badge } from '../../../../components/ui/badge';
@@ -24,6 +31,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
+import Link from 'next/link';
 
 const ProductImageSlider = ({ images }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -244,7 +252,7 @@ const ProductPageClient = ({ product }) => {
 							careInstructions={product?.care_instructions}
 						/>
 
-						<Tabs defaultValue='description' className='w-full'>
+						<Tabs defaultValue='description' className='w-full mt-6'>
 							<TabsList>
 								<TabsTrigger value='contents'>What&apos;s Included</TabsTrigger>
 								<TabsTrigger value='legal'>Legal Information</TabsTrigger>
@@ -259,10 +267,31 @@ const ProductPageClient = ({ product }) => {
 							</TabsContent>
 							<TabsContent value='legal'>
 								<p className='text-gray-500 dark:text-gray-400'>
-									{product.legal_info}
+									{product?.legal_info}
 								</p>
 							</TabsContent>
 						</Tabs>
+
+						{/* New Disclaimer Section */}
+						{/* <div className='p-4 my-6 border border-yellow-200 rounded-lg bg-yellow-50'>
+							<h3 className='flex items-center mb-2 text-lg font-semibold text-yellow-700'>
+								<AlertTriangle className='w-5 h-5 mr-2' />
+								Important Information
+							</h3>
+							<p className='text-sm text-yellow-600'>
+								Please note that we do not offer returns on products. Before
+								making a purchase, we strongly recommend reviewing our{' '}
+								<Link href='/refund-policy' className='underline'>
+									refund
+								</Link>{' '}
+								and{' '}
+								<Link href='/shipping-policy' className='underline'>
+									shipping
+								</Link>{' '}
+								policies. By proceeding with your purchase, you acknowledge that
+								you have read and agreed to these terms.
+							</p>
+						</div> */}
 					</div>
 				</div>
 			</div>
