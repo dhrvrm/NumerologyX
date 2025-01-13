@@ -21,7 +21,7 @@ export default function StylishTestimonial() {
 							))}
 						</div>
 						<blockquote className='mb-6 text-xl italic font-light text-gray-600'>
-							&quot;Ms. Prakritii Vermaa&apos;s counseling{' '}
+							&quot;Ms. Akreti Verma&apos;s counseling{' '}
 							<span className='font-bold text-orange-500'>transformed</span> my
 							personal and professional life. Her{' '}
 							<span className='font-bold text-orange-500'>

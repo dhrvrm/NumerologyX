@@ -11,24 +11,24 @@ import ServicesOffered from './_components/ServicesOffered.component';
 import Link from 'next/link';
 
 export const metadata = {
-	title: 'Prakritii Vermaa | Numerology Expert',
+	title: 'Akreti Verma | Numerology Expert',
 	description:
-		'Achieve and excel through the cosmic compass of numbers with Prakritii Vermaa. Over 10 years of experience in helping individuals unlock their true potential through personalized numerology consultations.',
+		'Achieve and excel through the cosmic compass of numbers with Akreti Verma. Over 10 years of experience in helping individuals unlock their true potential through personalized numerology consultations.',
 	keywords:
 		'numerology, numerology expert, life path, name correction, numerology consultations, spiritual guidance, career guidance, personal growth',
 	openGraph: {
-		title: 'Prakritii Vermaa | Numerology Expert',
+		title: 'Akreti Verma | Numerology Expert',
 		description:
-			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		type: 'website',
 		url: 'https://www.adeptnumero.in/about',
 		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
-		title: 'Prakritii Vermaa | Numerology Expert',
+		title: 'Akreti Verma | Numerology Expert',
 		description:
-			'With over 10 years of experience, Prakritii Vermaa offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
 	},
 	alternates: {
@@ -41,7 +41,7 @@ export default function AboutPage() {
 		<div className='min-h-screen text-gray-800 bg-white'>
 			<header className='px-4 py-12 text-orange-600 bg-gradient-to-r from-orange-100 to-orange-200 sm:px-6 lg:px-8'>
 				<div className='max-w-4xl mx-auto text-center'>
-					<h1 className='mb-2 text-4xl font-bold'>Prakritii Vermaa</h1>
+					<h1 className='mb-2 text-4xl font-bold'>Akreti Verma</h1>
 					<p className='text-xl'>
 						Achieve and Excel through cosmic compass of numbers
 					</p>
@@ -52,7 +52,7 @@ export default function AboutPage() {
 				<div className='grid items-center grid-cols-1 gap-12 mb-16 md:grid-cols-2'>
 					<Image
 						src='/images/prakriti-about.jpg'
-						alt='Prakritii Vermaa'
+						alt='Akreti Verma'
 						width={400}
 						height={400}
 						className='rounded-full shadow-lg'

@@ -15,8 +15,8 @@ export default function TermsAndConditionsPage() {
 			<p>
 				Adept Numero is a platform offering expert numerology consultations and
 				curated products, including crystals, rudraksha, and decor items. Our
-				consultations, provided by <strong>Prakritii Vermaa</strong>, include
-				name corrections, mobile number analysis, business and personal
+				consultations, provided by <strong>Prakriti</strong>, include name
+				corrections, mobile number analysis, business and personal
 				consultations, and remedies based on numerology principles. These
 				services are provided in conjunction with our e-commerce offerings of
 				selected spiritual products.

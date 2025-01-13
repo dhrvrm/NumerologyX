@@ -18,11 +18,11 @@ export default function TermsOfUsePage() {
 
 			<h2>2. Consultation Services</h2>
 			<p>
-				Our expert numerology consultation services are provided by Prakritii
-				Vermaa. Sessions are held via Zoom, Google Meet, or WhatsApp and last
-				for either 60 or 40 minutes, depending on the service chosen. Please
-				ensure that you provide necessary details (e.g., name, date of birth)
-				prior to the session.
+				Our expert numerology consultation services are provided by Prakriti.
+				Sessions are held via Zoom, Google Meet, or WhatsApp and last for either
+				60 or 40 minutes, depending on the service chosen. Please ensure that
+				you provide necessary details (e.g., name, date of birth) prior to the
+				session.
 			</p>
 			<p>
 				<strong>Important:</strong> Rescheduling requests from the client side

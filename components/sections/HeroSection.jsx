@@ -105,7 +105,7 @@ const HeroSection = () => {
 
 				<Image
 					src='/images/prakriti-hero-600.webp'
-					alt='Prakritii Vermaa Ace Numerelogist Picture'
+					alt='Akreti Verma Ace Numerelogist Picture'
 					loading='eager'
 					width={400}
 					height={600}

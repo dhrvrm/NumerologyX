@@ -19,7 +19,7 @@ export default function TestimonialsSection() {
 		{
 			name: 'Sarabjit Singh',
 			designation: 'Entrepreneur',
-			text: 'Highly Recommend! Life-Changing Results. I recently had the privilege of receiving career and finance consultation, as well as mobile number consultation, from Prakritii Vermaa, and the results have been nothing short of amazing! Her deep knowledge in numerology and insightful guidance have brought a significant positive shift in my life.',
+			text: 'Highly Recommend! Life-Changing Results. I recently had the privilege of receiving career and finance consultation, as well as mobile number consultation, from Akreti Verma, and the results have been nothing short of amazing! Her deep knowledge in numerology and insightful guidance have brought a significant positive shift in my life.',
 		},
 		{
 			name: 'Pinky Kumari',
@@ -29,12 +29,12 @@ export default function TestimonialsSection() {
 		{
 			name: 'Himanshu Kumar',
 			designation: 'Student',
-			text: "I highly recommend Prakritii Vermaa to anyone seeking life transformation through numerology. Her approach is both professional and compassionate. I'm truly grateful for her expertise and support!",
+			text: "I highly recommend Akreti Verma to anyone seeking life transformation through numerology. Her approach is both professional and compassionate. I'm truly grateful for her expertise and support!",
 		},
 		{
 			name: 'Manisha Singh',
 			designation: 'Teacher',
-			text: "Prakritii Vermaa's numerology consultation was insightful and transformative. Her guidance helped me gain clarity and direction in both personal and professional aspects. Highly recommend her expertise.",
+			text: "Akreti Verma's numerology consultation was insightful and transformative. Her guidance helped me gain clarity and direction in both personal and professional aspects. Highly recommend her expertise.",
 		},
 	];
 
