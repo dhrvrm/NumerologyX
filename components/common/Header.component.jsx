@@ -20,8 +20,8 @@ const Header = () => {
 		<header className='sticky top-0 z-50 flex items-center justify-between px-4 py-2 bg-white border-b-2 md:py-4 border-grey-50 md:px-10'>
 			<Link href='/' className='flex items-center' title='Home Page Link'>
 				<Image
-					src='/images/logo/adept-numero.webp'
-					alt='Adept Numero Company Logo'
+					src='/images/logo/akreti-verma.webp'
+					alt='akreti verma Logo'
 					title='Logo'
 					width={150}
 					height={50}
