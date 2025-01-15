@@ -7,7 +7,7 @@ import StylishTestimonial from '../components/sections/SingularTestimonial';
 
 export const metadata = {
 	alternates: {
-		canonical: 'https://www.adeptnumero.in',
+		canonical: 'https://www.akretiverma.com',
 	},
 };
 

@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 		},
 		other: {
 			'og:type': 'article',
-			'og:url': `https://www.adeptnumero.in/consultations/${consultation.slug}`,
+			'og:url': `https://www.akretiverma.com/consultations/${consultation.slug}`,
 		},
 	};
 }

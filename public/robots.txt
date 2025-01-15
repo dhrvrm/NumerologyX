@@ -7,4 +7,4 @@ Disallow: /booking-status
 
 Allow: /
 
-Sitemap: https://www.adeptnumero.in/sitemap.xml 
+Sitemap: https://www.akretiverma.com/sitemap.xml 

@@ -10,15 +10,15 @@ export const metadata = {
 		description:
 			'Unlock the power of numerology with expert consultations by Akreti Verma. Offering name correction, mobile number analysis, business consultations, and more for a harmonious and prosperous life.',
 		type: 'website',
-		url: 'https://www.adeptnumero.in/consultations',
-		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
+		url: 'https://www.akretiverma.com/consultations',
+		images: ['https://www.akretiverma.com/images/social/home-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Numerology Consultations | AdeptNumero',
 		description:
 			'Unlock your potential with expert numerology consultations by Akreti Verma. Services include name correction, mobile number analysis, business consultations, and more.',
-		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
+		images: ['https://www.akretiverma.com/images/social/home-banner.png'],
 	},
 };
 

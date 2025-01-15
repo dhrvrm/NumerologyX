@@ -26,17 +26,18 @@ export const metadata = {
 		description:
 			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at AdeptNumero.',
 		type: 'website',
-		url: 'https://www.adeptnumero.in',
-		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
-		site_name: 'AdeptNumero.in',
+		url: 'https://www.akretiverma.com',
+		images: ['https://www.akretiverma.com/images/social/home-banner.png'],
+		site_name: 'akretiverma.com',
 	},
 	twitter: {
 		card: 'summary_large_image',
 		site: '@adeptnumero',
-		title: 'AdeptNumero.in | Expert Numerology Consulation & Mystical Products',
+		title:
+			'akretiverma.com | Expert Numerology Consulation & Mystical Products',
 		description:
-			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at AdeptNumero.in.',
-		images: ['https://www.adeptnumero.in/images/social/home-banner.png'],
+			'Discover your life path with personalized numerology consultations. Shop authentic stones, yantras, and pendants for spiritual growth at akretiverma.com.',
+		images: ['https://www.akretiverma.com/images/social/home-banner.png'],
 	},
 	robots: {
 		index: true,

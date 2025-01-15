@@ -21,18 +21,18 @@ export const metadata = {
 		description:
 			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		type: 'website',
-		url: 'https://www.adeptnumero.in/about',
-		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
+		url: 'https://www.akretiverma.com/about',
+		images: ['https://www.akretiverma.com/images/social/about-banner.png'],
 	},
 	twitter: {
 		card: 'summary_large_image',
 		title: 'Akreti Verma | Numerology Expert',
 		description:
 			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
-		images: ['https://www.adeptnumero.in/images/social/about-banner.png'],
+		images: ['https://www.akretiverma.com/images/social/about-banner.png'],
 	},
 	alternates: {
-		canonical: 'https://www.adeptnumero.in/about',
+		canonical: 'https://www.akretiverma.com/about',
 	},
 };
 

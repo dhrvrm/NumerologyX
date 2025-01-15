@@ -17,7 +17,7 @@ import { Toaster } from '../../../components/ui/toaster';
 
 export const metadata = {
 	alternates: {
-		canonical: 'https://www.adeptnumero.in/contact-us',
+		canonical: 'https://www.akretiverma.com/contact-us',
 	},
 };
 
