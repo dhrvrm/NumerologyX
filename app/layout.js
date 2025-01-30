@@ -3,6 +3,8 @@ import Header from '../components/common/Header.component';
 import Footer from '../components/common/Footer.component';
 import './globals.css';
 
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 const lora = Lora({
 	subsets: ['latin'],
 	display: 'swap',
@@ -64,6 +66,7 @@ export default function RootLayout({ children }) {
 				<Header />
 				<main>{children}</main>
 				<Footer />
+				<GoogleAnalytics gaId='G-XRQKY2G1M4' />
 			</body>
 		</html>
 	);
