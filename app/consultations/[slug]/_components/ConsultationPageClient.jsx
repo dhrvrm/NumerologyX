@@ -20,7 +20,9 @@ export default function ConsultationPageClient({ consultation }) {
 
 	const fetchSlots = async () => {
 		try {
-			const response = await fetch('/api/consultation/slots');
+			const response = await fetch('/api/consultation/slots', {
+				cache: 'no-store',
+			});
 			if (!response.ok) {
 				throw new Error('Failed to fetch available slots');
 			}
