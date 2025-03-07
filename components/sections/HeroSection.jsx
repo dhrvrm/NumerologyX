@@ -77,7 +77,7 @@ const HeroSection = () => {
 						text='Book Your Consultation'
 						className='w-max whitespace-nowrap'
 					/>
-					<ShinyButton text='Explore Free Tools' className='' />
+					<ShinyButton text='Explore Free Tools' />
 				</div>
 				<div className='flex items-center gap-2 text-sm text-gray-600'>
 					<RatingStars />

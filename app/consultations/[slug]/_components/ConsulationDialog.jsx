@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
 	Dialog,
 	DialogContent,
@@ -27,6 +27,8 @@ export function ConsultationDialog({
 	consultation,
 	availableSlots,
 	onBookingComplete,
+	selectedMode,
+	selectedPrice,
 }) {
 	const [isDialogOpen, setIsDialogOpen] = useState(false);
 	const [formData, setFormData] = useState({
@@ -36,6 +38,7 @@ export function ConsultationDialog({
 		phoneNumber: '',
 		email: '',
 		selectedSlot: '',
+		consultationMode: selectedMode || 'Online', // Default to Online or use passed mode
 	});
 	const [step, setStep] = useState('details');
 	const [otp, setOtp] = useState('');
@@ -43,6 +46,13 @@ export function ConsultationDialog({
 	const [termsAccepted, setTermsAccepted] = useState(false);
 	const [loading, setLoading] = useState(false);
 	const [errors, setErrors] = useState({});
+
+	// Update formData when selectedMode changes from parent
+	useEffect(() => {
+		if (selectedMode) {
+			setFormData((prev) => ({ ...prev, consultationMode: selectedMode }));
+		}
+	}, [selectedMode]);
 
 	const formatSlot = (startTime) => {
 		// Set your desired timezone (e.g., Asia/Kolkata)
@@ -130,6 +140,10 @@ export function ConsultationDialog({
 		validateField(name, value);
 	};
 
+	const handleConsultationModeChange = (value) => {
+		setFormData((prev) => ({ ...prev, consultationMode: value }));
+	};
+
 	const validateField = (name, value) => {
 		let error = '';
 		switch (name) {
@@ -176,8 +190,10 @@ export function ConsultationDialog({
 	const validateForm = () => {
 		let isValid = true;
 		Object.keys(formData).forEach((key) => {
-			validateField(key, formData[key]);
-			if (errors[key]) isValid = false;
+			if (key !== 'selectedSlot' && key !== 'consultationMode') {
+				validateField(key, formData[key]);
+				if (errors[key]) isValid = false;
+			}
 		});
 		return isValid;
 	};
@@ -185,6 +201,14 @@ export function ConsultationDialog({
 	const handleSlotSelect = (slotId) => {
 		const selectedSlot = availableSlots.find((slot) => slot.$id === slotId);
 		setFormData((prev) => ({ ...prev, selectedSlot: selectedSlot.startTime }));
+	};
+
+	// Get the current price based on consultation mode
+	const getCurrentPrice = () => {
+		const mode = consultation.consultationModes?.find(
+			(m) => m.mode === formData.consultationMode
+		);
+		return mode ? mode.price : selectedPrice || consultation.currentPrice;
 	};
 
 	const handleSubmit = async () => {
@@ -222,9 +246,10 @@ export function ConsultationDialog({
 					customerName: formData.name,
 					email: formData.email,
 					phoneNumber: formData.phoneNumber,
-					paymentAmount: consultation.currentPrice * 100,
+					paymentAmount: getCurrentPrice() * 100,
 					dob: formData.dateOfBirth,
 					pob: formData.placeOfBirth,
+					consultationMode: formData.consultationMode, // Add consultation mode
 				}),
 			});
 
@@ -265,7 +290,7 @@ export function ConsultationDialog({
 				<div className='mb-4 text-center'>
 					<h3 className='text-lg font-semibold'>{consultation.title}</h3>
 					<p className='text-sm text-gray-600'>
-						Amount to be paid: ₹{consultation.currentPrice}
+						Amount to be paid: ₹{getCurrentPrice()}
 					</p>
 				</div>
 				{step === 'details' && (

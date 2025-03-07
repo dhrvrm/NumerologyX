@@ -13,6 +13,28 @@ import { ConsultationDialog } from './ConsulationDialog';
 
 export default function ConsultationPageClient({ consultation }) {
 	const [availableSlots, setAvailableSlots] = useState([]);
+	const [selectedMode, setSelectedMode] = useState('Online');
+
+	// Get the selected mode's price information
+	const getSelectedModePrice = () => {
+		if (consultation.consultationModes) {
+			const mode = consultation.consultationModes.find(
+				(m) => m.mode === selectedMode
+			);
+			return (
+				mode || {
+					price: consultation.currentPrice,
+					actualPrice: consultation.actualPrice,
+				}
+			);
+		}
+		return {
+			price: consultation.currentPrice,
+			actualPrice: consultation.actualPrice,
+		};
+	};
+
+	const selectedPriceInfo = getSelectedModePrice();
 
 	useEffect(() => {
 		fetchSlots();
@@ -78,7 +100,46 @@ export default function ConsultationPageClient({ consultation }) {
 									{consultation.title}
 								</h1>
 								<p className='mb-6 text-gray-600'>{consultation.description}</p>
+
+								{/* Consultation mode selection */}
+								{consultation.consultationModes && (
+									<div className='mb-6'>
+										<h3 className='mb-2 text-lg font-semibold text-gray-800'>
+											Select Consultation Mode:
+										</h3>
+										<div className='flex flex-wrap gap-2'>
+											{consultation.consultationModes.map((mode, index) => (
+												<Button
+													key={index}
+													variant={
+														selectedMode === mode.mode ? 'default' : 'outline'
+													}
+													onClick={() => setSelectedMode(mode.mode)}
+													className={
+														selectedMode === mode.mode
+															? 'bg-orange-600 hover:bg-orange-700'
+															: ''
+													}
+												>
+													{mode.mode}
+												</Button>
+											))}
+										</div>
+									</div>
+								)}
+
+								{/* Price display */}
 								<div className='flex flex-wrap items-center justify-between gap-2 mb-6'>
+									<div>
+										<span className='text-xl font-bold text-gray-800'>
+											Energy Exchange: ₹{selectedPriceInfo.price}
+										</span>
+										<span className='ml-2 text-sm text-gray-500 line-through'>
+											₹{selectedPriceInfo.actualPrice}
+										</span>
+									</div>
+								</div>
+								{/* <div className='flex flex-wrap items-center justify-between gap-2 mb-6'>
 									<div>
 										<span className='text-xl font-bold text-gray-800'>
 											Energy Exchange: ₹{consultation.currentPrice}
@@ -87,11 +148,13 @@ export default function ConsultationPageClient({ consultation }) {
 											₹{consultation.actualPrice}
 										</span>
 									</div>
-								</div>
+								</div> */}
 								<ConsultationDialog
 									consultation={consultation}
 									availableSlots={availableSlots}
 									onBookingComplete={handleBookingComplete}
+									selectedMode={selectedMode}
+									selectedPrice={selectedPriceInfo.price}
 								/>
 							</CardContent>
 						</Card>

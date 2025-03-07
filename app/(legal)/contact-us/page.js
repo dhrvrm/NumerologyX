@@ -75,21 +75,21 @@ export default function ContactPage() {
 							<h4>Social Media</h4>
 							<li className='flex flex-col gap-4'>
 								<a
-									href='https://www.facebook.com/adeptnumeroprakritiivermaa'
+									href='https://www.facebook.com/akreti/'
 									className='flex gap-2 transition-all duration-300 transform hover:text-blue-600 hover:scale-101'
 								>
 									<FacebookIcon className='w-6 h-6 p-1 rounded-sm bg-slate-100' />
 									<span>Facebook</span>
 								</a>
 								<a
-									href='https://www.instagram.com/adeptnumero'
+									href='https://www.instagram.com/akretiverma_acenumerologer'
 									className='flex gap-2 transition-all duration-300 transform hover:text-pink-600 hover:scale-101'
 								>
 									<InstagramIcon className='w-6 h-6 p-1 rounded-sm bg-slate-100' />
 									<span>Instagram</span>
 								</a>
 								<a
-									href='https://youtube.com/@adeptnumero?si=qS0TSypbKyrfocKT'
+									href='https://youtube.com/@akretiverma?si=h67AF4177sdf940U'
 									className='flex items-end gap-2 transition-all duration-300 transform hover:text-red-600 hover:scale-101'
 								>
 									<YoutubeIcon className='w-6 h-6 p-1 rounded-sm bg-slate-100' />

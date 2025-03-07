@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Facebook, Instagram, Youtube } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Youtube } from 'lucide-react';
 import { consultations } from '../../lib/Consulations';
 
 export default function Footer() {
@@ -144,25 +144,32 @@ export default function Footer() {
 				{/* Social Media Links */}
 				<div className='flex justify-center mt-8 space-x-6'>
 					<a
-						href='https://www.facebook.com/adeptnumeroprakritiivermaa'
-						className='text-gray-400 transition-all duration-300 transform hover:text-blue-600 hover:scale-110'
+						href='https://www.facebook.com/akreti'
+						className='p-2 text-gray-400 transition-all duration-300 transform rounded-lg hover:text-blue-600 hover:scale-105 hover:bg-orange-600/10 size-12'
 					>
 						<span className='sr-only'>Facebook</span>
 						<Facebook className='w-8 h-8' />
 					</a>
 					<a
-						href='https://www.instagram.com/adeptnumero'
-						className='text-gray-400 transition-all duration-300 transform hover:text-pink-600 hover:scale-110'
+						href='https://www.instagram.com/akretiverma_acenumerologer'
+						className='p-2 text-gray-400 transition-all duration-300 transform rounded-lg hover:text-pink-600 hover:scale-105 hover:bg-orange-600/10 size-12'
 					>
 						<span className='sr-only'>Instagram</span>
 						<Instagram className='w-8 h-8' />
 					</a>
 					<a
-						href='https://youtube.com/@adeptnumero?si=qS0TSypbKyrfocKT'
-						className='text-gray-400 transition-all duration-300 transform hover:text-red-600 hover:scale-110'
+						href='https://youtube.com/@akretiverma?si=h67AF4177sdf940U'
+						className='p-2 text-gray-400 transition-all duration-300 transform rounded-lg hover:text-red-600 hover:scale-105 hover:bg-orange-600/10 size-12'
 					>
 						<span className='sr-only'>YouTube</span>
 						<Youtube className='w-8 h-8' />
+					</a>
+					<a
+						href='https://www.linkedin.com/in/akreti'
+						className='p-2 text-gray-400 transition-all duration-300 transform rounded-lg hover:text-blue-600 hover:scale-105 hover:bg-orange-600/10 size-12'
+					>
+						<span className='sr-only'>LinkedIn</span>
+						<Linkedin className='w-8 h-8' />
 					</a>
 				</div>
 
