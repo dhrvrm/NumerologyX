@@ -13,13 +13,13 @@ import Link from 'next/link';
 export const metadata = {
 	title: 'Akreti Verma | Numerology Expert',
 	description:
-		'Achieve and excel through the cosmic compass of numbers with Akreti Verma. Over 10 years of experience in helping individuals unlock their true potential through personalized numerology consultations.',
+		'Achieve and excel through the cosmic compass of numbers with Akreti Verma. Over 6 years of experience in helping individuals unlock their true potential through personalized numerology consultations.',
 	keywords:
 		'numerology, numerology expert, life path, name correction, numerology consultations, spiritual guidance, career guidance, personal growth',
 	openGraph: {
 		title: 'Akreti Verma | Numerology Expert',
 		description:
-			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+			'With over 6 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		type: 'website',
 		url: 'https://www.akretiverma.com/about',
 		images: ['https://www.akretiverma.com/images/social/about-banner.png'],
@@ -28,7 +28,7 @@ export const metadata = {
 		card: 'summary_large_image',
 		title: 'Akreti Verma | Numerology Expert',
 		description:
-			'With over 10 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
+			'With over 6 years of experience, Akreti Verma offers personalized numerology consultations to unlock your true potential. Book a consultation today.',
 		images: ['https://www.akretiverma.com/images/social/about-banner.png'],
 	},
 	alternates: {
@@ -63,7 +63,7 @@ export default function AboutPage() {
 							About Me
 						</h2>
 						<p className='mb-4 text-lg'>
-							With over 10 years of experience in numerology, I&apos;ve helped
+							With over 6 years of experience in numerology, I&apos;ve helped
 							thousands of individuals unlock their true potential and find
 							their path in life.
 						</p>
