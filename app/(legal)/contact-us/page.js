@@ -12,6 +12,7 @@ import {
 	FacebookIcon,
 	InstagramIcon,
 	YoutubeIcon,
+	Linkedin,
 } from 'lucide-react';
 import { Toaster } from '../../../components/ui/toaster';
 
@@ -94,6 +95,13 @@ export default function ContactPage() {
 								>
 									<YoutubeIcon className='w-6 h-6 p-1 rounded-sm bg-slate-100' />
 									<span>YouTube</span>
+								</a>
+								<a
+									href='https://www.linkedin.com/in/akreti'
+									className='flex items-end gap-2 transition-all duration-300 transform hover:text-blue-600 hover:scale-101'
+								>
+									<Linkedin className='w-6 h-6 p-1 rounded-sm bg-slate-100' />
+									<span>LinkedIn</span>
 								</a>
 							</li>
 						</ul>
