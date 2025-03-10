@@ -73,12 +73,12 @@ export function ConsultationDialog({
 		try {
 			await logoutIfNeeded();
 
-			const token = await account.createPhoneToken(
-				'unique()',
-				`+91${formData.phoneNumber}`
-			);
-			setUserIdAW(token.userId);
-			setStep('otp');
+			// const token = await account.createPhoneToken(
+			// 	'unique()',
+			// 	`+91${formData.phoneNumber}`
+			// );
+			// setUserIdAW(token.userId);
+			setStep('slot');
 		} catch (error) {
 			console.error('Error sending OTP:', error);
 			toast({
@@ -370,7 +370,7 @@ export function ConsultationDialog({
 							)}
 						</div>
 						<Button type='submit' disabled={loading}>
-							{loading ? 'Sending OTP...' : 'Send OTP'}
+							{loading ? 'Fetching Slots...' : 'Select a slot'}
 						</Button>
 					</form>
 				)}
