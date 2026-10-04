@@ -1,16 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { User, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useUserStore } from '../../lib/zustand/userStore';
 import GetStartedButton from '../animata/button/get-started-button';
 import NavTabs from '../animata/container/nav-tabs';
 
 const Header = () => {
-	const { user } = useUserStore();
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const tabs = ['Store', 'Consultations', 'About', 'Blogs'];
 
@@ -40,15 +38,6 @@ const Header = () => {
 					text='Get Consultation'
 					className='hidden sm:flex w-max whitespace-nowrap'
 				/>
-
-				{user && (
-					<Link
-						className='p-2 bg-blue-100 rounded-full pointer'
-						href='/profile'
-					>
-						<User className='w-6 h-6 text-blue-500' />
-					</Link>
-				)}
 
 				{/* Hamburger Menu Button */}
 				<button

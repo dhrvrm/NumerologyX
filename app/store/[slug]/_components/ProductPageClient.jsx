@@ -11,8 +11,7 @@ import {
 	Plus,
 	ShieldCheck,
 	Truck,
-	CreditCard,
-	AlertTriangle,
+	MessageCircle,
 } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import { Input } from '../../../../components/ui/input';
@@ -25,13 +24,13 @@ import {
 } from '../../../../components/ui/tabs';
 import StickyCart from '../../_components/StickyCart';
 import { useCartStore } from '../../../../lib/zustand/cartStore';
+import { openWhatsApp } from '../../../../lib/whatsapp';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
-import Link from 'next/link';
 
 const ProductImageSlider = ({ images }) => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -108,6 +107,14 @@ const ProductPageClient = ({ product }) => {
 		} else {
 			alert('Insufficient stock');
 		}
+	};
+
+	const handleBuyOnWhatsApp = () => {
+		openWhatsApp(
+			`Hello! I would like to order:\n\n${product.title} x ${quantity} = ₹${(
+				product.current_price * quantity
+			).toFixed(2)}\n\nPlease share payment and delivery details.`
+		);
 	};
 
 	return (
@@ -207,6 +214,14 @@ const ProductPageClient = ({ product }) => {
 									? 'Add to Cart'
 									: 'Out of Stock'}
 							</Button>
+							<Button
+								className='bg-green-600 hover:bg-green-700 text-white flex items-center justify-center px-5 py-2.5 rounded-lg'
+								onClick={handleBuyOnWhatsApp}
+								disabled={product.quantity_available <= 0}
+							>
+								<MessageCircle className='w-4 h-4 mr-2' />
+								Buy on WhatsApp
+							</Button>
 						</div>
 
 						<div className='p-4 mb-6 bg-gray-100 rounded-lg dark:bg-gray-800'>
@@ -221,8 +236,8 @@ const ProductPageClient = ({ product }) => {
 									<span>Fast Shipping</span>
 								</div>
 								<div className='flex items-center'>
-									<CreditCard className='w-6 h-6 mr-2 text-purple-600' />
-									<span>100% Secure Payments</span>
+									<MessageCircle className='w-6 h-6 mr-2 text-green-600' />
+									<span>Order Easily on WhatsApp</span>
 								</div>
 							</div>
 						</div>
@@ -272,26 +287,6 @@ const ProductPageClient = ({ product }) => {
 							</TabsContent>
 						</Tabs>
 
-						{/* New Disclaimer Section */}
-						{/* <div className='p-4 my-6 border border-yellow-200 rounded-lg bg-yellow-50'>
-							<h3 className='flex items-center mb-2 text-lg font-semibold text-yellow-700'>
-								<AlertTriangle className='w-5 h-5 mr-2' />
-								Important Information
-							</h3>
-							<p className='text-sm text-yellow-600'>
-								Please note that we do not offer returns on products. Before
-								making a purchase, we strongly recommend reviewing our{' '}
-								<Link href='/refund-policy' className='underline'>
-									refund
-								</Link>{' '}
-								and{' '}
-								<Link href='/shipping-policy' className='underline'>
-									shipping
-								</Link>{' '}
-								policies. By proceeding with your purchase, you acknowledge that
-								you have read and agreed to these terms.
-							</p>
-						</div> */}
 					</div>
 				</div>
 			</div>

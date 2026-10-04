@@ -1,8 +1,13 @@
-import { fetchProductBySlug } from '../../../lib/appwrite/database';
+import { notFound } from 'next/navigation';
+import { getAllProducts, getProductBySlug } from '../../../lib/products';
 import ProductPageClient from './_components/ProductPageClient';
 
+export function generateStaticParams() {
+	return getAllProducts().map(({ slug }) => ({ slug }));
+}
+
 export async function generateMetadata({ params }) {
-	const product = await fetchProductBySlug(params.slug);
+	const product = getProductBySlug(params.slug);
 
 	if (!product) {
 		return {
@@ -31,10 +36,10 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProductPage({ params }) {
-	const product = await fetchProductBySlug(params.slug);
+	const product = getProductBySlug(params.slug);
 
 	if (!product) {
-		return <div>Product not found</div>;
+		notFound();
 	}
 
 	return <ProductPageClient product={product} />;
