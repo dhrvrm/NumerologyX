@@ -1,45 +1,17 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, MessageCircle } from 'lucide-react';
 import { Button } from '../../../../components/ui/button';
 import { Card, CardContent } from '../../../../components/ui/card';
-import { toast } from '../../../../components/ui/use-toast';
 import Image from 'next/image';
-import { Toaster } from '../../../../components/ui/toaster';
-import { ConsultationDialog } from './ConsulationDialog';
+import { getWhatsAppLink } from '../../../../lib/whatsapp';
 
 export default function ConsultationPageClient({ consultation }) {
-	const [availableSlots, setAvailableSlots] = useState([]);
-
-	useEffect(() => {
-		fetchSlots();
-	}, []);
-
-	const fetchSlots = async () => {
-		try {
-			const response = await fetch('/api/consultation/slots');
-			if (!response.ok) {
-				throw new Error('Failed to fetch available slots');
-			}
-			const slots = await response.json();
-			setAvailableSlots(slots);
-		} catch (error) {
-			console.error('Error fetching available slots:', error);
-			toast({
-				title: 'Error',
-				description: 'Failed to fetch available slots. Please try again.',
-				variant: 'destructive',
-			});
-		}
-	};
-
-	const handleBookingComplete = () => {
-		// Refresh available slots after booking
-		fetchSlots();
-	};
+	const whatsAppLink = getWhatsAppLink(
+		`Hello! I would like to book the "${consultation.title}" consultation (₹${consultation.currentPrice}). Please share the available slots and payment details.`
+	);
 
 	return (
 		<div className='min-h-screen px-4 py-12 bg-gradient-to-br from-gray-100 to-gray-200 sm:px-6 lg:px-8'>
@@ -86,11 +58,16 @@ export default function ConsultationPageClient({ consultation }) {
 										</span>
 									</div>
 								</div>
-								<ConsultationDialog
-									consultation={consultation}
-									availableSlots={availableSlots}
-									onBookingComplete={handleBookingComplete}
-								/>
+								<a
+									href={whatsAppLink}
+									target='_blank'
+									rel='noopener noreferrer'
+								>
+									<Button className='w-full text-white bg-green-600 hover:bg-green-700'>
+										<MessageCircle className='w-4 h-4 mr-2' />
+										Book on WhatsApp
+									</Button>
+								</a>
 							</CardContent>
 						</Card>
 					</motion.div>
@@ -146,7 +123,6 @@ export default function ConsultationPageClient({ consultation }) {
 					</motion.div>
 				</div>
 			</div>
-			<Toaster />
 		</div>
 	);
 }

@@ -68,14 +68,6 @@ export default function Footer() {
 									</li>
 								)
 							)}
-							<li>
-								<Link
-									href={`/consultations/booking-status`}
-									className='transition-colors duration-200 hover:text-gray-900'
-								>
-									Booking Status
-								</Link>
-							</li>
 						</ul>
 					</div>
 

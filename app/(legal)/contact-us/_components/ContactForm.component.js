@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '../../../../components/ui/button';
 import { Input } from '../../../../components/ui/input';
 import { Textarea } from '../../../../components/ui/textarea';
-import { useToast } from '../../../../components/ui/use-toast';
+import { openWhatsApp } from '../../../../lib/whatsapp';
 
 export default function ContactForm() {
 	const [formData, setFormData] = useState({
@@ -12,49 +12,20 @@ export default function ContactForm() {
 		email: '',
 		message: '',
 	});
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const { toast } = useToast();
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
-		setIsSubmitting(true);
+		openWhatsApp(
+			`Hello! My name is ${formData.name} (${formData.email}).
 
-		try {
-			const response = await fetch('/api/contact', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
-			});
-
-			const data = await response.json();
-
-			if (data.success) {
-				toast({
-					title: 'Message sent',
-					description: `We've received your message (ID: ${data.enquiryId}) and will get back to you soon.`,
-				});
-				setFormData({ name: '', email: '', message: '' });
-			} else {
-				throw new Error(data.message || 'Failed to send message');
-			}
-		} catch (error) {
-			toast({
-				title: 'Error',
-				description:
-					error.message ||
-					'There was a problem sending your message. Please try again.',
-				variant: 'destructive',
-			});
-		} finally {
-			setIsSubmitting(false);
-		}
+${formData.message}`
+		);
+		setFormData({ name: '', email: '', message: '' });
 	};
 
 	return (
@@ -88,9 +59,7 @@ export default function ContactForm() {
 					required
 				/>
 			</div>
-			<Button type='submit' disabled={isSubmitting}>
-				{isSubmitting ? 'Sending...' : 'Send Message'}
-			</Button>
+			<Button type='submit'>Send on WhatsApp</Button>
 		</form>
 	);
 }

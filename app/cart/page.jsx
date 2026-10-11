@@ -1,6 +1,7 @@
 'use client';
 
 import { useCartStore } from '../../lib/zustand/cartStore';
+import { openWhatsApp } from '../../lib/whatsapp';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '../../components/ui/button';
@@ -41,6 +42,22 @@ export default function CartPage() {
 	// Function to remove an item from the cart
 	const handleRemove = (item) => {
 		removeFromCart(item.$id); // Use `$id` to remove the item from the cart
+	};
+
+	const handleOrderOnWhatsApp = () => {
+		const lines = cartItems.map(
+			(item) =>
+				`• ${item.title} x ${item.quantity} = ₹${(
+					item.current_price * item.quantity
+				).toFixed(2)}`
+		);
+		openWhatsApp(
+			`Hello! I would like to order:\n\n${lines.join(
+				'\n'
+			)}\n\nTotal: ₹${totalAmount.toFixed(
+				2
+			)}\n\nPlease share payment and delivery details.`
+		);
 	};
 
 	if (isLoading) {
@@ -135,7 +152,7 @@ export default function CartPage() {
 						</div>
 						<div className='flex justify-between mb-2'>
 							<span>Shipping</span>
-							<span>Calculated at checkout</span>
+							<span>Confirmed on WhatsApp</span>
 						</div>
 						<Separator className='my-4' />
 						<div className='flex justify-between font-semibold'>
@@ -144,9 +161,12 @@ export default function CartPage() {
 						</div>
 					</CardContent>
 					<CardFooter>
-						<Link href='/checkout' passHref className='w-full'>
-							<Button className='w-full'>Proceed to Checkout</Button>
-						</Link>
+						<Button
+							className='w-full bg-green-600 hover:bg-green-700'
+							onClick={handleOrderOnWhatsApp}
+						>
+							Order on WhatsApp
+						</Button>
 					</CardFooter>
 				</Card>
 			</div>

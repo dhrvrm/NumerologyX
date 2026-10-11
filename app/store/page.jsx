@@ -4,7 +4,7 @@ import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { fetchAllProducts } from '../../lib/appwrite/database';
+import { getAllProducts } from '../../lib/products';
 import { Input } from '../../components/ui/input';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
@@ -133,42 +133,14 @@ const ProductCardSkeleton = () => (
 );
 
 const Store = () => {
-	const [products, setProducts] = useState([]);
-	const [filteredProducts, setFilteredProducts] = useState([]);
+	const products = getAllProducts();
+	const [filteredProducts, setFilteredProducts] = useState(products);
 	const [searchTerm, setSearchTerm] = useState('');
 	const [selectedCategory, setSelectedCategory] = useState('');
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
 
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	const categoryFromUrl = searchParams.get('category') || '';
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const cachedProducts = sessionStorage.getItem('cachedProducts');
-				if (cachedProducts) {
-					setProducts(JSON.parse(cachedProducts));
-					setFilteredProducts(JSON.parse(cachedProducts));
-					setLoading(false);
-				} else {
-					const fetchedProducts = await fetchAllProducts();
-					setProducts(fetchedProducts);
-					setFilteredProducts(fetchedProducts);
-					sessionStorage.setItem(
-						'cachedProducts',
-						JSON.stringify(fetchedProducts)
-					);
-					setLoading(false);
-				}
-			} catch (err) {
-				setError('Failed to fetch products');
-				setLoading(false);
-			}
-		};
-		fetchData();
-	}, []);
 
 	useEffect(() => {
 		setSelectedCategory(categoryFromUrl);
@@ -190,14 +162,6 @@ const Store = () => {
 		const newCategory = category === selectedCategory ? '' : category;
 		router.push(`/store?category=${encodeURIComponent(newCategory)}`);
 	};
-
-	if (error) {
-		return (
-			<div className='flex items-center justify-center h-screen text-red-500'>
-				Error: {error}
-			</div>
-		);
-	}
 
 	return (
 		<>
@@ -238,13 +202,9 @@ const Store = () => {
 					layout
 				>
 					<AnimatePresence>
-						{loading
-							? Array(8)
-									.fill(0)
-									.map((_, index) => <ProductCardSkeleton key={index} />)
-							: filteredProducts.map((product) => (
-									<ProductCard key={product?.$id} product={product} />
-							  ))}
+						{filteredProducts.map((product) => (
+							<ProductCard key={product?.$id} product={product} />
+						))}
 					</AnimatePresence>
 				</motion.div>
 			</div>
